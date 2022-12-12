@@ -1,4 +1,4 @@
-<h1></h1>
+<h1>First Steps in OOP - Exercise</h1>
 <table>
   <tr>
     <th>Solution</th>
