@@ -1,4 +1,4 @@
-<h1></h1>
+<h1>Polymorphism and Abstraction - Lab</h1>
 <table>
   <tr>
     <th>Solution</th>
