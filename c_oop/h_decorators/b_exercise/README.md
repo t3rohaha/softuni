@@ -38,7 +38,7 @@
   </tr>
   <tr>
     <td>09. *Computer Store</td>
-    <td><img src="https://geps.dev/progress/0"></td>
+    <td><img src="https://geps.dev/progress/81"></td>
   </tr>
 </table>
 
