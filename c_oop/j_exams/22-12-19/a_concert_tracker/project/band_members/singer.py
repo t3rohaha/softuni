@@ -1,0 +1,10 @@
+from project.band_members.musician import Musician
+
+class Singer(Musician):
+
+    def get_available_skill_types(self):
+        return ['sing high pitch notes', 'sing low pitch notes']
+
+    def learn_new_skill(self, new_skill: str):
+        return super().learn_new_skill(new_skill)
+
