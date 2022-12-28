@@ -26,23 +26,23 @@
   </tr>
   <tr>
     <td>06. Definition Lists</td>
-    <td><img src="https://geps.dev/progress/0"></td>
+    <td><img src="https://geps.dev/progress/100"></td>
   </tr>
   <tr>
     <td>07. Reversed List</td>
-    <td><img src="https://geps.dev/progress/0"></td>
+    <td><img src="https://geps.dev/progress/100"></td>
   </tr>
   <tr>
     <td>08. Modern JavaScript</td>
-    <td><img src="https://geps.dev/progress/0"></td>
+    <td><img src="https://geps.dev/progress/100"></td>
   </tr>
   <tr>
     <td>09. Book Story</td>
-    <td><img src="https://geps.dev/progress/0"></td>
+    <td><img src="https://geps.dev/progress/100"></td>
   </tr>
   <tr>
     <td>10. World Cup News</td>
-    <td><img src="https://geps.dev/progress/0"></td>
+    <td><img src="https://geps.dev/progress/100"></td>
   </tr>
 </table>
 
