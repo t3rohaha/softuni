@@ -26,11 +26,11 @@
   </tr>
   <tr>
     <td>06. Contrasting Colors</td>
-    <td><img src="https://geps.dev/progress/0">06. Contrasting Colors</td>
+    <td><img src="https://geps.dev/progress/0"></td>
   </tr>
   <tr>
     <td>07. The Making of a CSS Font</td>
-    <td><img src="https://geps.dev/progress/0">07. The Making of a CSS Font</td>
+    <td><img src="https://geps.dev/progress/0"></td>
   </tr>
   <tr>
     <td>08. Font Awesome Icons</td>
