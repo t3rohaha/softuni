@@ -1,0 +1,23 @@
+html {
+    font-family: Raleway, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+h1, h2 {
+    font-family: Great Vibes, cursive;
+    font-weight: bold;
+    line-height: 1.2;
+}
+
+.level1 {
+    list-style: square;
+}
+
+.level2 {
+    list-style: inside;
+}
+
+.level3 {
+    list-style: circle;
+}
