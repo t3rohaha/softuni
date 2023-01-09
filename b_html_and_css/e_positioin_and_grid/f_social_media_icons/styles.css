@@ -1,0 +1,16 @@
+/* Requirements */
+
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css");
+
+ul {
+    list-style-type: none;
+}
+
+li {
+    display: inline-block;
+}
+
+a {
+    border-radius: 50%;
+}
+

@@ -1,0 +1,132 @@
+/* Required Required Required Required Required Required Required Required */
+
+body {
+    background-color: rgb(238, 238, 238);
+}
+
+a {
+    color: rgb(0, 102, 0);
+}
+
+img {
+    background-color: rgb(255, 255, 255);
+    box-shadow: rgba(0, 0, 0, 0.25);
+}
+
+blockquote {
+    font-family: Georgia, serif;
+}
+
+h1, h2 {
+    font-family: Georgia, serif;
+    font-size: 1em;
+}
+
+/* NOT Required NOT Required NOT Required NOT Required NOT Required */
+
+body {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-areas:
+        "navbar navbar navbar navbar"
+        "main main main aside";
+    padding: 20px 100px;
+}
+
+.navbar {
+    grid-area: navbar;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid black;
+    padding-bottom: 20px;
+}
+
+.navbar > p {
+    font-size: 26px;
+    font-weight: 900;
+    margin: 0;
+}
+
+.navbar > nav > ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.navbar > nav > ul > li {
+    display: inline-block;
+}
+
+.navbar > nav > ul > li + * {
+    margin-left: 20px;
+}
+
+li {
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+main {
+    grid-area: main;
+}
+
+aside {
+    grid-area: aside;
+}
+
+img {
+    border: 3px solid black;
+    padding: 5px;
+}
+
+#elevator-img {
+    float: right;
+    margin-left: 30px;
+    margin-bottom: 30px;
+}
+
+#nature-img {
+    float: left;
+    margin-right: 30px;
+    margin-bottom: 30px;
+}
+
+blockquote {
+    float: right;
+    margin-left: 30px;
+    border-left: 3px solid grey;
+    padding-left: 30px;
+    width: 300px;
+    color: grey;
+    font-style: italic;
+    display: flex;
+    flex-direction: column;
+}
+
+blockquote > p {
+    align-self: flex-end;
+}
+
+aside {
+    text-align: center;
+}
+
+aside ul {
+    padding: 10px;
+    margin: 0;
+    line-height: 2rem;
+}
+
+aside h3 {
+    text-decoration: underline;
+    margin-bottom: 0;
+}
+
+a:hover {
+    text-decoration: underline;
+}
