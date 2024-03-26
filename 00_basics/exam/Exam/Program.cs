@@ -1,0 +1,12 @@
+﻿// TennisEquipment.Solve();
+// BasketballEquipment.Solve();
+// FootballResults.Solve();
+// Skeleton.Solve();
+// Gymnastics.Solve();
+// WorldSnookerChampionship.Solve();
+// GameNumberWars.Solve();
+// Darts.Solve();
+// TennisRanklist.Solve();
+// FitnessCenter.Solve();
+// HighJump.Solve();
+// BasketballTournament.Solve();
