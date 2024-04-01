@@ -64,9 +64,13 @@ __Build Automation__: Automating the process of building and running the applica
 
 __Project Management__: Facilitates orginizing and managing project files, such as creating, opening and saving projects.
 
-## Cycles
+## Control Statements
 
-__Cycle__: A construct that allows executing code repeatedly.
+__for loop__: Control statement that executes a block of code for a given number of times.
+
+__while loop__: Control statement that executes a block of repeatedly until a given condition is true.
+
+__do-while loop__: Similar to while loop but always executes atleast once.
 
 ## SoftUni Judge
 
