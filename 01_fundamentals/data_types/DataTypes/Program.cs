@@ -1,0 +1,11 @@
+﻿// IntegerOperations.Solve();
+// SumDigits.Solve();
+// Elevator.Solve();
+// SumOfChars.Solve();
+// PrintPartOfAsciiTable.Solve();
+// TriplesOfLatinLetters.Solve();
+// WaterOverflow.Solve();
+// BeerKegs.Solve();
+// SpiceMustFlow.Solve();
+// PokeMon.Solve();
+// Snowballs.Solve();
