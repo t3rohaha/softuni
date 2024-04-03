@@ -90,6 +90,113 @@ __string__: Represents a sequence of characters --> `var x = "Hello!";`
 
 4. __Variable Span__: How long it takes for a variable to be used after its initialized. Always declare a variable as late as possible.
 
+## Methods
+
+Code block that contains a series of instructions, it's executed only when invoked. In C# the Main method is the entry point of every application, it's called by the CLR when the program is started.
+
+__Declaration__: Methods are declared inside a class.
+
+## Array
+
+Used to store collection of elements.
+
+### Key Considerations
+
+1. Fixed size: once the array is created it's size cannot be changed.
+
+__Multidimentional Array__: Array containing other arrays, creating dimentions.
+
+__Jagged Array__: Multidimentional array of different sizes.
+
+__Allocation__: Setting the size of the array, so corresponding memory could be allocated.
+
+```csharp
+    var nums = new int[5];      // Declaration (Allocating memory)
+    nums[0] = 1;                // Setting value
+    Console.WriteLine(nums[0]); // Accessing value
+
+    var arr = new int[] { 1, 2, 3, 4, 5 };          // Array initialization
+    var arr2d = new int[,] {{1, 2}, {1, 2}};        // Multidimentional array
+    var jaggedArr = new int[,] {{1, 2}, {1, 2, 3}}  // Multidimentional array of different sizes
+```
+
+## Value and Reference Types
+
+__Value Types__: Value types store their value directly in the memory allocated for the variable itself. They are copied by value, which means that when you copy a value type variable to another variable a copy of the data is made.
+
+__Reference Types__: Reference types store an address to the location where the data is stored. They are copied by reference, which means that when you copy the reference to another variable, both will point to same data.
+
+## Stack and Heap
+
+__Stack__: Is part of the computer memory, which is used to store and access small information. It is faster than the Heap.
+
+__Heap__: Is part of the computer memory, which is used to store and access large information. It is bigger in size than the Stack.
+
+## List
+
+Used to store collection of elements.
+
+### Key Considerations
+
+1. Dynamic size: The size can grow or shring as needed. This facilitates manipulating data without worrying about collections initial size.
+
+2. Additional functionality: Lists provide additional functionality for manipulating the elements.
+
+```csharp
+    var nums = new List<int>(); // Initialization
+    nums.Add(1);                // Add element
+    nums.Add(2);
+    nums.Add(3);
+    nums.Remove(1);             // Remove element
+    nums.RemoveAt(0);           // Remove element at index
+    nums.Insert(0, 100);        // Insert element at index
+    nums.Contains(100);         // Checks if element exists in collection
+    nums.Sort();                // Sorts the elements in ascending order (changes the collection directly)
+    nums.Reverse();             // Reverse the elements in collection
+    Console.WriteLine(nums[0]); // Access element
+```
+
+## Dictionary
+
+Collection of key-value pairs. Each element has a unique key and an associated value.
+
+__Sorted Dictionary__: A dictionary which keeps elements ordered by key.
+
+```csharp
+    var phonebook = new Dictionary<string, string>();   // Initialization
+    phonebook.Add("John", "0883332222");                // Add element
+    phonebook["Frank"] = "0884442222";                  // Add element
+    phonebook.Count;                                    // Get elements count
+    phonebook.Keys;                                     // A collection of the keys
+    phonebook.Values;                                   // A collection of the values
+    phonebook.ContainsKey("John");                      // Check if key presents in collection
+    phonebook.Remove("John");                           // Remove by key
+```
+
+## LINQ
+
+LINQ (Language-Integrated Query) is a package provided by Microsoft that extends the tools provided for manipulating collections.
+
+## Lambda expression
+
+Anonymous function. Often used to pass a function as argument without declaring it.
+
 ## SoftUni Judge
 
-[Data Types and Variables - Exercises](https://judge.softuni.org/Contests/Practice/Index/206#0)
+[Data Types and Variables - Exercises](https://judge.softuni.org/Contests/Practice/Index/1205#0)
+
+## Questions
+
+### 01 What would be the output?
+
+```csharp
+    static void Print(string text)
+    {
+        Console.WriteLine(text);
+    }
+
+    static string Print(string text)
+    {
+        return text;
+    }
+```
