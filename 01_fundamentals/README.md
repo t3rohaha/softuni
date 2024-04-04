@@ -1,20 +1,31 @@
 # Programming Fundamentals
 
-The course covers fundamental concepts in programming, which serve as the basis for effective and high-quality learning in professional modules. Learners build upon the knowledge acquired in the Programming Basics course and begin to utilize more advanced programming techniques and structures such as lists, dictionaries, objects, and classes.
+The course covers fundamental concepts in programming, which serve as the basis
+for effective and high-quality learning in professional modules. Learners build
+upon the knowledge acquired in the Programming Basics course and begin to
+utilize more advanced programming techniques and structures such as lists,
+dictionaries, objects, and classes.
 
 ## Error Handling
 
-__try block__: In this block, you place the code that you want to monitor for exceptions.
+__try block__: In this block, you place the code that you want to monitor for
+exceptions.
 
-__catch block__: In this block, you handle the exception that occured within the try block.
+__catch block__: In this block, you handle the exception that occured within the
+try block.
 
-__finally block (optional)__: This block is executed whether or not an exception occures. It's typically used for cleanup operations, such as closing files or releasing resources.
+__finally block (optional)__: This block is executed whether or not an exception
+occures. It's typically used for cleanup operations, such as closing files or
+releasing resources.
 
 ## Version Control
 
-System that records changes to source code files, so developers can recall specific versions later. It allows multiple developers to work on the same source code, while __keeping track of changes__ and __managing conflicts__.
+System that records changes to source code files, so developers can recall
+specific versions later. It allows multiple developers to work on the same
+source code, while __keeping track of changes__ and __managing conflicts__.
 
-__Repository__: This is where the source code which is version controlled is stored.
+__Repository__: This is where the source code which is version controlled is
+stored.
 
 __Remote Repository__: Holds project assets in a remote server.
 
@@ -28,13 +39,19 @@ __Pull__: Take and merge the changes from remote repository.
 
 __Push__: Send local changes to remote repository.
 
-__Branch__: Parallel version of the repository, allowing developers to work on features without affecting the main repository. Branches can be merged back to the main repository.
+__Branch__: Parallel version of the repository, allowing developers to work on
+features without affecting the main repository. Branches can be merged back to
+the main repository.
 
-__Merge__: Merging is the process of combining changes from source branch to target branch. It shows the conflicts (if any) between the branches and after reviewing the code the changes can be integrated.
+__Merge__: Merging is the process of combining changes from source branch to
+target branch. It shows the conflicts (if any) between the branches and after
+reviewing the code the changes can be integrated.
 
-__Checkout__: Is switching between different branches. It updates the working directory to reflect the state of a specific commit or branch.
+__Checkout__: Is switching between different branches. It updates the working
+directory to reflect the state of a specific commit or branch.
 
-__Conflict Resolution__: Conflict occures when two or more developers make conflicting changes to same file.
+__Conflict Resolution__: Conflict occures when two or more developers make
+conflicting changes to same file.
 
 ## Data Types
 
@@ -60,17 +77,22 @@ __ulong__: Unsigned 64-bit integer.
 
 ### Real Number Types
 
-__float__: 32-bit, 6-9 digits precision after the decimal point --> `var x = 0F;`
+__float__: 32-bit, 6-9 digits precision after the decimal point -->
+`var x = 0F;`
 
-__double__: 64-bit, 15-17 digits precision after the decimal point. --> `var x = 0D;`
+__double__: 64-bit, 15-17 digits precision after the decimal point. -->
+`var x = 0D;`
 
-__decimal__ 128-bit, 28-29 digits precision after the decimal point. --> `var x = 0M;`
+__decimal__ 128-bit, 28-29 digits precision after the decimal point. -->
+`var x = 0M;`
 
 ### Type Conversion:
 
-__Implicit__: Numerical value of bigger type can be changed to value of smaller type, i.e. int > short.
+__Implicit__: Numerical value of bigger type can be changed to value of smaller
+type, i.e. int > short.
 
-__Explicit__: Converting to numerical type explicitly i.e. (int) doubleNum. Data precision can be lost.
+__Explicit__: Converting to numerical type explicitly i.e. (int) doubleNum. Data
+precision can be lost.
 
 ### Other
 
@@ -80,19 +102,25 @@ __char__: Represents a single symbol --> `var x = 'A';`
 
 __string__: Represents a sequence of characters --> `var x = "Hello!";`
 
-### Key Considerations
+__Key Considerations__
 
-1. __Default Behaviour__: When creating a numerical value without decimal point it's __integer__. If it is with a decimal point it's __double__.
+1. __Default Behaviour__: When creating a numerical value without decimal point
+it's __integer__. If it is with a decimal point it's __double__.
 
-2. __Precise Calculations__: Floating-point types sometimes have unexpected behaviour, so for precise calculations is better to use decimal.
+2. __Precise Calculations__: Floating-point types sometimes have unexpected
+behaviour, so for precise calculations is better to use decimal.
 
-3. __Division Behaviour__: Integer division behaves differently from real division. I.E. 10 / 0 = Divide by zero exception, but 10 / 0.0 = Infinity.
+3. __Division Behaviour__: Integer division behaves differently from real
+division. I.E. 10 / 0 = Divide by zero exception, but 10 / 0.0 = Infinity.
 
-4. __Variable Span__: How long it takes for a variable to be used after its initialized. Always declare a variable as late as possible.
+4. __Variable Span__: How long it takes for a variable to be used after its
+initialized. Always declare a variable as late as possible.
 
 ## Methods
 
-Code block that contains a series of instructions, it's executed only when invoked. In C# the Main method is the entry point of every application, it's called by the CLR when the program is started.
+Code block that contains a series of instructions, it's executed only when 
+invoked. In C# the Main method is the entry point of every application, it's
+called by the CLR when the program is started.
 
 __Declaration__: Methods are declared inside a class.
 
@@ -100,103 +128,146 @@ __Declaration__: Methods are declared inside a class.
 
 Used to store collection of elements.
 
-### Key Considerations
-
-1. Fixed size: once the array is created it's size cannot be changed.
-
 __Multidimentional Array__: Array containing other arrays, creating dimentions.
 
 __Jagged Array__: Multidimentional array of different sizes.
 
-__Allocation__: Setting the size of the array, so corresponding memory could be allocated.
+__Allocation__: Setting the size of the array, so corresponding memory could be
+allocated.
 
 ```csharp
-    var nums = new int[5];      // Declaration (Allocating memory)
-    nums[0] = 1;                // Setting value
-    Console.WriteLine(nums[0]); // Accessing value
+var nums = new int[5];      // Declaration (Allocating memory)
+nums[0] = 1;                // Setting value
+Console.WriteLine(nums[0]); // Accessing value
 
-    var arr = new int[] { 1, 2, 3, 4, 5 };          // Array initialization
-    var arr2d = new int[,] {{1, 2}, {1, 2}};        // Multidimentional array
-    var jaggedArr = new int[,] {{1, 2}, {1, 2, 3}}  // Multidimentional array of different sizes
+var arr = new int[] { 1, 2, 3, 4, 5 };          // Array initialization
+var arr2d = new int[,] {{1, 2}, {1, 2}};        // Multidimentional array
+var jaggedArr = new int[,] {{1, 2}, {1, 2, 3}}  // Multidimentional array of
+                                                // different sizes
 ```
+
+__Key Considerations__
+
+1. Fixed size: once the array is created it's size cannot be changed.
 
 ## Value and Reference Types
 
-__Value Types__: Value types store their value directly in the memory allocated for the variable itself. They are copied by value, which means that when you copy a value type variable to another variable a copy of the data is made.
+__Value Types__: Value types store their value directly in the memory allocated
+for the variable itself. They are copied by value, which means that when you
+copy a value type variable to another variable a copy of the data is made.
 
-__Reference Types__: Reference types store an address to the location where the data is stored. They are copied by reference, which means that when you copy the reference to another variable, both will point to same data.
+__Reference Types__: Reference types store an address to the location where the
+data is stored. They are copied by reference, which means that when you copy the
+reference to another variable, both will point to same data.
 
 ## Stack and Heap
 
-__Stack__: Is part of the computer memory, which is used to store and access small information. It is faster than the Heap.
+__Stack__: Is part of the computer memory, which is used to store and access
+small information. It is faster than the Heap.
 
-__Heap__: Is part of the computer memory, which is used to store and access large information. It is bigger in size than the Stack.
+__Heap__: Is part of the computer memory, which is used to store and access
+large information. It is bigger in size than the Stack.
 
 ## List
 
 Used to store collection of elements.
 
-### Key Considerations
-
-1. Dynamic size: The size can grow or shring as needed. This facilitates manipulating data without worrying about collections initial size.
-
-2. Additional functionality: Lists provide additional functionality for manipulating the elements.
-
 ```csharp
-    var nums = new List<int>(); // Initialization
-    nums.Add(1);                // Add element
-    nums.Add(2);
-    nums.Add(3);
-    nums.Remove(1);             // Remove element
-    nums.RemoveAt(0);           // Remove element at index
-    nums.Insert(0, 100);        // Insert element at index
-    nums.Contains(100);         // Checks if element exists in collection
-    nums.Sort();                // Sorts the elements in ascending order (changes the collection directly)
-    nums.Reverse();             // Reverse the elements in collection
-    Console.WriteLine(nums[0]); // Access element
+var nums = new List<int>(); // Initialization
+nums.Add(1);                // Add element
+nums.Add(2);
+nums.Add(3);
+nums.Remove(1);             // Remove element
+nums.RemoveAt(0);           // Remove element at index
+nums.Insert(0, 100);        // Insert element at index
+nums.Contains(100);         // Checks if element exists in collection
+nums.Sort();                // Sorts the elements in ascending order (changes
+                            // the collection directly)
+nums.Reverse();             // Reverse the elements in collection
+Console.WriteLine(nums[0]); // Access element
 ```
+
+__Key Considerations__
+
+1. Dynamic size: The size can grow or shring as needed. This facilitates
+manipulating data without worrying about collections initial size.
+
+2. Additional functionality: Lists provide additional functionality for
+manipulating the elements.
 
 ## Dictionary
 
-Collection of key-value pairs. Each element has a unique key and an associated value.
+Collection of key-value pairs. Each element has a unique key and an associated
+value.
 
 __Sorted Dictionary__: A dictionary which keeps elements ordered by key.
 
 ```csharp
-    var phonebook = new Dictionary<string, string>();   // Initialization
-    phonebook.Add("John", "0883332222");                // Add element
-    phonebook["Frank"] = "0884442222";                  // Add element
-    phonebook.Count;                                    // Get elements count
-    phonebook.Keys;                                     // A collection of the keys
-    phonebook.Values;                                   // A collection of the values
-    phonebook.ContainsKey("John");                      // Check if key presents in collection
-    phonebook.Remove("John");                           // Remove by key
+var phonebook = new Dictionary<string, string>();   // Initialization
+phonebook.Add("John", "0883332222");                // Add element
+phonebook["Frank"] = "0884442222";                  // Add element
+phonebook.Count;                                    // Get elements count
+phonebook.Keys;                                     // A collection of the keys
+phonebook.Values;                                   // A collection of the
+                                                    // values
+phonebook.ContainsKey("John");                      // Check if key presents in
+                                                    // collection
+phonebook.Remove("John");                           // Remove by key
 ```
 
 ## LINQ
 
-LINQ (Language-Integrated Query) is a package provided by Microsoft that extends the tools provided for manipulating collections.
+LINQ (Language-Integrated Query) is a feature that facilitates woking with data
+from different data sources.
+
+```csharp
+// The three parts of a LINQ query
+// 1. Data source.
+int[] numbers = [ 0, 1, 2, 3, 4 ];
+
+// 2. Query creation.
+// evenNums is IEnumerable<int>
+var evenNums =
+    from num in numbers
+    where (num % 2) == 0
+    select num;
+
+// 3. Query execution.
+for (int n in evenNums)
+{
+    Console.WriteLine(n);
+}
+```
+
+__Key Considerations__
+    
+1. A LINQ __data source__ is any object that supports the generic
+__IEnumerable<T>__, or an interface that inherits from it, typically
+__IQueryable<T>__.
 
 ## Lambda expression
 
-Anonymous function. Often used to pass a function as argument without declaring it.
+Anonymous function. Often used to pass a function as argument without declaring
+it.
 
 ## SoftUni Judge
 
 [Data Types and Variables - Exercises](https://judge.softuni.org/Contests/Practice/Index/1205#0)
+
+[Exam Preparation - 20 March 2024](https://judge.softuni.org/Contests/Practice/Index/4778#0)
 
 ## Questions
 
 ### 01 What would be the output?
 
 ```csharp
-    static void Print(string text)
-    {
-        Console.WriteLine(text);
-    }
+static void Print(string text)
+{
+    Console.WriteLine(text);
+}
 
-    static string Print(string text)
-    {
-        return text;
-    }
+static string Print(string text)
+{
+    return text;
+}
 ```
