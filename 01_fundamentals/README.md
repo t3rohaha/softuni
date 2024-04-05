@@ -217,20 +217,17 @@ phonebook.Remove("John");                           // Remove by key
 
 ## LINQ
 
-LINQ (Language-Integrated Query) is a feature that facilitates woking with data
-from different data sources.
+LINQ (Language-Integrated Query) is a feature that facilitates working with data
+from different data sources. LINQ query can be written using either
+__query syntax__ or __method syntax__.
 
+__Three parts of LINQ query__:
 ```csharp
-// The three parts of a LINQ query
 // 1. Data source.
 int[] numbers = [ 0, 1, 2, 3, 4 ];
 
 // 2. Query creation.
-// evenNums is IEnumerable<int>
-var evenNums =
-    from num in numbers
-    where (num % 2) == 0
-    select num;
+var evenNums = numbers.Where(n => n % 2 == 0);
 
 // 3. Query execution.
 for (int n in evenNums)
@@ -239,13 +236,44 @@ for (int n in evenNums)
 }
 ```
 
+__Query and Method syntax difference__:
+```csharp
+int[] nums = [ 1, 2, 3, 4, 5, 1, 2, 3 ];
+
+// Filtering query using query syntax
+var evenNums1 =
+    from n in nums
+    where n % 2 == 0
+    select n;
+
+// Filtering query using method syntax
+var evenNums2 = nums.Where(n => n % 2 == 0);
+
+// Ordering query using query syntax
+var descNums1 =
+    from n in nums
+    orderby n descending
+    select n;
+
+// Ordering query using method syntax
+var descNums2 = nums.OrderDescending();
+
+// Grouping query using query syntax
+var groupedNums1 =
+    from n in nums
+    group n by n;
+
+// Grouping query using method syntax
+var groupedNums = nums.GroupBy(n => n);
+```
+
 __Key Considerations__
 
 1. A LINQ __data source__ is any object that supports the generic
 __IEnumerable<T>__, or an interface that inherits from it, typically
 __IQueryable<T>__.
 
-2. A _query_ is executed with foreach. To force query execution and cache the
+2. A __query__ is executed with foreach. To force query execution and cache the
 result you can call ToList or ToArray methods.
 
 ## Lambda expression
@@ -291,11 +319,13 @@ or a new object should be created.
 
 __Regex__: a way to match text by pattern.
 
-## SoftUni Judge
+## Resources
 
 [Data Types and Variables - Exercises](https://judge.softuni.org/Contests/Practice/Index/1205#0)
 
 [Exam Preparation - 20 March 2024](https://judge.softuni.org/Contests/Practice/Index/4778#0)
+
+[Dictionaries, Lambda and LINQ - Exercises](https://judge.softuni.org/Contests/Practice/Index/209#0)
 
 ## Questions
 
@@ -312,3 +342,7 @@ static string Print(string text)
     return text;
 }
 ```
+
+### 02 Can you define a method in anonymous type?
+
+### 03 What is mutability?
