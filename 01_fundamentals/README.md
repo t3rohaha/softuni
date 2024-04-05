@@ -240,15 +240,56 @@ for (int n in evenNums)
 ```
 
 __Key Considerations__
-    
+
 1. A LINQ __data source__ is any object that supports the generic
 __IEnumerable<T>__, or an interface that inherits from it, typically
 __IQueryable<T>__.
+
+2. A _query_ is executed with foreach. To force query execution and cache the
+result you can call ToList or ToArray methods.
 
 ## Lambda expression
 
 Anonymous function. Often used to pass a function as argument without declaring
 it.
+
+## Classes and Objects
+
+In OOP Classes and Objects are fundamental concepts used to model real world
+entities. Classes define attributes and behaviour. Objects implement classes.
+
+```csharp
+class Point
+{
+    public int X { get; set; }
+    public int Y { get; set; }
+
+    public void Print()
+    {
+        Console.WriteLine($"{X} {Y}");
+    }
+}
+
+var point = new Point() { X = 5, Y = 10 };
+```
+
+## Files and Directories
+
+C# provides classes (File and Directory) for working with files and directories.
+
+## Strings
+
+C# provides different ways to manipulate strings i.e. built in methods,
+__StringBuilder__ class and __Regex__ class.
+
+__StringBuilder__: String is __immutable__ which can lead to performance issues
+when you need to concatenate multiple strings. __StringBuilder__ provides a
+__mutable__ buffer which allows efficient append, insert and remove operations.
+
+__Mutability__: Whether the state of an object can be changed after creating it,
+or a new object should be created.
+
+__Regex__: a way to match text by pattern.
 
 ## SoftUni Judge
 
