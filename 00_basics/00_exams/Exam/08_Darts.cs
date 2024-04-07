@@ -1,6 +1,8 @@
-public static class Darts
+namespace Darts;
+
+class Program
 {
-    public static void Solve()
+    static void Main()
     {
         var playerName = Console.ReadLine()!;
         var totalPoints = 301;
@@ -9,41 +11,28 @@ public static class Darts
 
         while (true)
         {
-            var cmd1 = Console.ReadLine()!;
+            var cmd = Console.ReadLine()!;
 
-            if (cmd1 == "Retire") break;    // Exit
+            if (cmd == "Retire") break;    // Exit
 
             var points = int.Parse(Console.ReadLine()!);
 
-            if (cmd1 == "Double")
-            {
-                points *= 2;
-            }
-            else if (cmd1 == "Triple")
-            {
-                points *= 3;
-            }
+            if (cmd == "Double") points *= 2;
+            else if (cmd == "Triple") points *= 3;
 
             if (totalPoints - points >= 0)
             {
                 totalPoints -= points;
                 successfulShots++;
             }
-            else
-            {
-                unsuccessfulShots++;
-            }
+            else unsuccessfulShots++;
 
             if (totalPoints == 0) break;    // Exit
         }
 
         if (totalPoints == 0)
-        {
             Console.WriteLine($"{playerName} won the leg with {successfulShots} shots.");
-        }
         else
-        {
             Console.WriteLine($"{playerName} retired after {unsuccessfulShots} unsuccessful shots.");
-        }
     }
 }

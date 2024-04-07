@@ -1,6 +1,8 @@
-public static class BasketballTournament
+namespace BasketballTournament;
+
+class Program
 {
-    public static void Solve()
+    static void Main()
     {
         var totalGames = 0f;
         var wins = 0f;

@@ -1,6 +1,8 @@
-public static class Gymnastics
+namespace Gymnastics;
+
+class Program
 {
-    public static void Solve()
+    static void Main()
     {
         var country = Console.ReadLine()!;
         var equipment = Console.ReadLine()!;

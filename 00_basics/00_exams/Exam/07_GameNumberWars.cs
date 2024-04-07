@@ -1,6 +1,8 @@
-public static class GameNumberWars
+namespace GameNumberWars;
+
+class Program
 {
-    public static void Solve()
+    static void Main()
     {
         var player1 = Console.ReadLine()!;
         var player2 = Console.ReadLine()!;
@@ -29,25 +31,14 @@ public static class GameNumberWars
                 card2 = int.Parse(Console.ReadLine()!);
 
                 if (card1 > card2)
-                {
                     Console.WriteLine($"{player1} is winner with {playerPoints1} points");
-                }
                 else
-                {
                     Console.WriteLine($"{player2} is winner with {playerPoints2} points");
-                }
-
                 break;
             }
 
-            if (card1 > card2)
-            {
-                playerPoints1 += card1 - card2;
-            }
-            else
-            {
-                playerPoints2 += card2 - card1;
-            }
+            if (card1 > card2) playerPoints1 += card1 - card2;
+            else playerPoints2 += card2 - card1;
         }
     }
 }

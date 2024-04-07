@@ -1,6 +1,8 @@
-public static class TennisEquipment
+namespace TennisEquipment;
+
+class Program
 {
-    public static void Solve()
+    static void Main()
     {
         var racketPrice = decimal.Parse(Console.ReadLine()!);
         var racketsCount = int.Parse(Console.ReadLine()!);

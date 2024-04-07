@@ -1,6 +1,8 @@
-public static class Skeleton
+namespace Skeleton;
+
+class Program
 {
-    public static void Solve()
+    static void Main()
     {
         var m = int.Parse(Console.ReadLine()!);     // Minutes of the time to beat
         var s = int.Parse(Console.ReadLine()!);     // Seconds of the time to beat

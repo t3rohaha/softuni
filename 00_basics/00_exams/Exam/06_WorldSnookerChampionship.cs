@@ -1,6 +1,8 @@
-public static class WorldSnookerChampionship
+namespace WorldSnookerChampionship;
+
+class Program
 {
-    public static void Solve()
+    static void Main()
     {
         var ticketStage = Console.ReadLine()!;
         var ticketType = Console.ReadLine()!;
@@ -42,18 +44,12 @@ public static class WorldSnookerChampionship
 
         total *= ticketCount;
 
-        if (total > 4000)
-        {
-            total -= total * 0.25f;     // 25% discount
-        }
-        else if (total > 2500)
-        {
-            total -= total * 0.10f;     // 10% discount
-        }
+        if (total > 4000) total -= total * 0.25f;       // 25% discount
+        else if (total > 2500) total -= total * 0.10f;  // 10% discount
 
         if (pictureIncluded == "Y" && total <= 4000)
         {
-            total += 40f * ticketCount; // Picture with trophy price
+            total += 40f * ticketCount; // Add picture with trophy price
         }
 
         Console.WriteLine($"{total:0.00}");

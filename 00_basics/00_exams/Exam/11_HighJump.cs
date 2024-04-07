@@ -1,6 +1,8 @@
-public static class HighJump
+namespace HighJump;
+
+class Program
 {
-    public static void Solve()
+    static void Main()
     {
         ushort finalTargetHeight = ushort.Parse(Console.ReadLine()!);
         ushort targetHeight = (ushort)(finalTargetHeight - 30);
@@ -18,10 +20,7 @@ public static class HighJump
                 targetHeight += 5;
                 attempts = 3;
             }
-            else
-            {
-                attempts--;
-            }
+            else attempts--;
 
             jumpsCount++;
 
@@ -30,12 +29,8 @@ public static class HighJump
         }
 
         if (heightCompleted >= finalTargetHeight)
-        {
             Console.WriteLine($"Tihomir succeeded, he jumped over {finalTargetHeight}cm after {jumpsCount} jumps.");
-        }
         else
-        {
             Console.WriteLine($"Tihomir failed at {targetHeight}cm after {jumpsCount} jumps.");
-        }
     }
 }

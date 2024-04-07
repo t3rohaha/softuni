@@ -1,6 +1,8 @@
-public static class BasketballEquipment
+namespace BasketballEquipment;
+
+class Program
 {
-    public static void Solve()
+    static void Main()
     {
         var fee = decimal.Parse(Console.ReadLine()!); // Basketball practice annual fee
 
