@@ -1,6 +1,8 @@
-public static class TriplesOfLatinLetters
+namespace TriplesOfLatinLetters;
+
+class Program
 {
-    public static void Solve()
+    static void Main()
     {
         var n = byte.Parse(Console.ReadLine()!);
 

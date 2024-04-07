@@ -1,13 +1,14 @@
+namespace Snowballs;
 using System.Numerics;
 
-public static class Snowballs
+class Program
 {
-    public static void Solve()
+    static void Main()
     {
         var snowballsCount = byte.Parse(Console.ReadLine()!);
-
-        var outputFormula = "";
         BigInteger maxSnowballValue = 0;
+        string outputFormula = "";
+
         for (byte i = 0; i < snowballsCount; i++)
         {
             var snowballSnow = int.Parse(Console.ReadLine()!);

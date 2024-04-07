@@ -1,19 +1,21 @@
-public static class BeerKegs
+namespace BeerKegs;
+
+class Program
 {
-    public static void Solve()
+    static void Main()
     {
         var inputCount = byte.Parse(Console.ReadLine()!);
 
-        var biggestKegModel = "";
-        var biggestKegSize = 0D;
+        string biggestKegModel = "";
+        double biggestKegSize = 0;
 
         for (byte i = 0; i < inputCount; i ++)
         {
-            var kegModel = Console.ReadLine()!;
+            string kegModel = Console.ReadLine()!;
             var kegRadius = double.Parse(Console.ReadLine()!);
             var kegHeight = double.Parse(Console.ReadLine()!);
 
-            var kegSize = Math.PI * Math.Pow(kegRadius, 2) * kegHeight;
+            double kegSize = Math.PI * Math.Pow(kegRadius, 2) * kegHeight;
 
             if (biggestKegSize < kegSize)
             {

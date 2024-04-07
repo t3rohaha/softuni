@@ -1,6 +1,8 @@
-public static class PrintPartOfAsciiTable
+namespace PrintPartOfAsciiTable;
+
+class Program
 {
-    public static void Solve()
+    static void Main()
     {
         var start = byte.Parse(Console.ReadLine()!);
         var end = byte.Parse(Console.ReadLine()!);

@@ -1,11 +1,9 @@
+namespace DestinationMapper;
 using System.Text.RegularExpressions;
 
-// To test in Judge:
-// 00 Remove static keyword from class
-// 01 Rename Run to Main
-static class DestinationMapper
+class Program
 {
-    public static void Run()
+    static void Main()
     {
         string encryptedLocations = Console.ReadLine()!;
 

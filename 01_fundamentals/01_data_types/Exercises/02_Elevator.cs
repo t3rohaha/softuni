@@ -1,6 +1,8 @@
-public static class Elevator
+namespace Elevator;
+
+class Program
 {
-    public static void Solve()
+    static void Main()
     {
         var peopleCount = double.Parse(Console.ReadLine()!);
         var elevatorCapacity = double.Parse(Console.ReadLine()!);

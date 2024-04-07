@@ -1,2 +1,0 @@
-﻿// Phonebook.Run();
-// PopulationCounter.Run();

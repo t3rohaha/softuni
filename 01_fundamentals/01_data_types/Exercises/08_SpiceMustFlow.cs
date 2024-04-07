@@ -1,12 +1,14 @@
-public static class SpiceMustFlow
+namespace SpiceMustFlow;
+
+class Program
 {
-    public static void Solve()
+    static void Main()
     {
         var startingYield = int.Parse(Console.ReadLine()!);
 
-        var days = 0;
-        var totalYield = 0L;
-        var yield = startingYield;
+        int days = 0;
+        int yield = startingYield;
+        long totalYield = 0;
 
         while (yield >= 100)
         {
@@ -15,10 +17,7 @@ public static class SpiceMustFlow
             yield -= 10;
         }
 
-        if (totalYield > 0)
-        {
-            totalYield -= 26;
-        }
+        if (totalYield > 0) totalYield -= 26;
 
         Console.WriteLine(days);
         Console.WriteLine(totalYield);

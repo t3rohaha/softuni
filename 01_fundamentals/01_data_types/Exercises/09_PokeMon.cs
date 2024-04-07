@@ -1,13 +1,15 @@
-public static class PokeMon
+namespace PokeMon;
+
+class Program
 {
-    public static void Solve()
+    static void Main()
     {
         var initialPokePower = int.Parse(Console.ReadLine()!);  // N
         var pokeDistance = int.Parse(Console.ReadLine()!);      // M
         var exhaustionFactor = int.Parse(Console.ReadLine()!);  // Y
 
-        var pokePower = initialPokePower;
-        var pokesCount = 0;
+        int pokePower = initialPokePower;
+        int pokesCount = 0;
 
         while (pokePower >= pokeDistance)
         {
@@ -17,10 +19,7 @@ public static class PokeMon
             
             if (pokePower == initialPokePower / 2M)
             {
-                if (exhaustionFactor == 0)
-                {
-                    continue;
-                }
+                if (exhaustionFactor == 0) continue;
                 
                 pokePower /= exhaustionFactor;
             }

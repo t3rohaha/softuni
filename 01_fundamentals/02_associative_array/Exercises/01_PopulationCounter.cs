@@ -1,19 +1,8 @@
-/*
+namespace PopulationCounter;
 
-The intention of this solution is to exercise LINQ queries.
-
-Example input:
-Sofia|Bulgaria|1
-Veliko Tarnovo|Bulgaria|2
-London|UK|4
-Rome|Italy|3
-report
-
-*/
-
-public static class PopulationCounter
+class Program
 {
-    public static void Run()
+    static void Main()
     {
         var population = new List<CityInfo>();
 
@@ -33,6 +22,7 @@ public static class PopulationCounter
             });
         }
 
+        // LINQ APPROACH
         var countryGroup = population
         .GroupBy(x => x.Country)
         .OrderByDescending(x => x.Sum(y => y.Population))
@@ -54,7 +44,7 @@ public static class PopulationCounter
     }
 }
 
-public class CityInfo
+class CityInfo
 {
     public string? City { get; set; }
 

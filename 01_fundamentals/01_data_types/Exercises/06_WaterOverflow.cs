@@ -1,6 +1,8 @@
-public static class WaterOverflow
+namespace WaterOverflow;
+
+class Program
 {
-    public static void Solve()
+    static void Main()
     {
         var inputCount = byte.Parse(Console.ReadLine()!);
 
@@ -10,14 +12,8 @@ public static class WaterOverflow
         {
             var liters = short.Parse(Console.ReadLine()!);
             
-            if (tank + liters <= 255)
-            {
-                tank += liters;
-            }
-            else
-            {
-                Console.WriteLine("Insufficient capacity!");
-            }
+            if (tank + liters <= 255) tank += liters;
+            else Console.WriteLine("Insufficient capacity!");
         }
 
         Console.WriteLine(tank);

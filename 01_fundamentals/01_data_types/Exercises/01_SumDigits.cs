@@ -1,6 +1,8 @@
-public static class SumDigits
+namespace SumDigits;
+
+class Program
 {
-    public static void Solve()
+    static void Main()
     {
         var num = Console.ReadLine()!;
 
@@ -8,7 +10,6 @@ public static class SumDigits
 
         for (var i = 0; i < num.Length; i++)
         {
-            
             sum += (byte)char.GetNumericValue(num[i]);
         }
 

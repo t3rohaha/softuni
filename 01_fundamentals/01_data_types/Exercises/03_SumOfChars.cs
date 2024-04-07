@@ -1,6 +1,8 @@
-public static class SumOfChars
+namespace SumOfChars;
+
+class Program
 {
-    public static void Solve()
+    static void Main()
     {
         var inputCount = byte.Parse(Console.ReadLine()!);
 

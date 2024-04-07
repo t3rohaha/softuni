@@ -1,6 +1,8 @@
-public class Phonebook
+namespace Phonebook;
+
+class Program
 {
-    public static void Run()
+    static void Main()
     {
         var phonebook = new SortedDictionary<string, string>();
 

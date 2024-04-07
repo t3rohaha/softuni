@@ -1,10 +1,13 @@
 # Programming Fundamentals
 
 The course covers fundamental concepts in programming, which serve as the basis
-for effective and high-quality learning in professional modules. Learners build
-upon the knowledge acquired in the Programming Basics course and begin to
-utilize more advanced programming techniques and structures such as lists,
-dictionaries, objects, and classes.
+for effective and high-quality learning in professional modules. It includes
+[Error Handling](#error-handling), [Version Control](#version-control),
+[Data Types](#data-types), [Array and List](#array-and-list),
+[Associative Array](#associative-array),
+[Classes and Objects](#classes-and-objects),
+[Text Processing](#text-processing) and definitions for
+__Value and Reference Types__, __Stack and Heap__, __Mutability__.
 
 ## Error Handling
 
@@ -102,19 +105,16 @@ __char__: Represents a single symbol --> `var x = 'A';`
 
 __string__: Represents a sequence of characters --> `var x = "Hello!";`
 
-__Key Considerations__
+__NB!__
 
-1. __Default Behaviour__: When creating a numerical value without decimal point
-it's __integer__. If it is with a decimal point it's __double__.
+1. The __default type__ of a numerical value without decimal point is __int__.
+With decimal point is __double__.
 
-2. __Precise Calculations__: Floating-point types sometimes have unexpected
-behaviour, so for precise calculations is better to use decimal.
+2. Floating type values have unexpected behaviour when performing
+__precise calculations__. In that case use __decimal__.
 
-3. __Division Behaviour__: Integer division behaves differently from real
-division. I.E. 10 / 0 = Divide by zero exception, but 10 / 0.0 = Infinity.
-
-4. __Variable Span__: How long it takes for a variable to be used after its
-initialized. Always declare a variable as late as possible.
+3. Integer division behaves differently from real division. I.E. 10 / 0 =
+Divide by zero exception, but 10 / 0.0 = Infinity.
 
 ## Methods
 
@@ -124,53 +124,15 @@ called by the CLR when the program is started.
 
 __Declaration__: Methods are declared inside a class.
 
-## Array
+## Array and List
 
-Used to store collection of elements.
-
-__Multidimentional Array__: Array containing other arrays, creating dimentions.
-
-__Jagged Array__: Multidimentional array of different sizes.
-
-__Allocation__: Setting the size of the array, so corresponding memory could be
-allocated.
+Collection of elements.
 
 ```csharp
 var nums = new int[5];      // Declaration (Allocating memory)
 nums[0] = 1;                // Setting value
 Console.WriteLine(nums[0]); // Accessing value
-
-var arr = new int[] { 1, 2, 3, 4, 5 };          // Array initialization
-var arr2d = new int[,] {{1, 2}, {1, 2}};        // Multidimentional array
-var jaggedArr = new int[,] {{1, 2}, {1, 2, 3}}  // Multidimentional array of
-                                                // different sizes
 ```
-
-__Key Considerations__
-
-1. Fixed size: once the array is created it's size cannot be changed.
-
-## Value and Reference Types
-
-__Value Types__: Value types store their value directly in the memory allocated
-for the variable itself. They are copied by value, which means that when you
-copy a value type variable to another variable a copy of the data is made.
-
-__Reference Types__: Reference types store an address to the location where the
-data is stored. They are copied by reference, which means that when you copy the
-reference to another variable, both will point to same data.
-
-## Stack and Heap
-
-__Stack__: Is part of the computer memory, which is used to store and access
-small information. It is faster than the Heap.
-
-__Heap__: Is part of the computer memory, which is used to store and access
-large information. It is bigger in size than the Stack.
-
-## List
-
-Used to store collection of elements.
 
 ```csharp
 var nums = new List<int>(); // Initialization
@@ -187,18 +149,24 @@ nums.Reverse();             // Reverse the elements in collection
 Console.WriteLine(nums[0]); // Access element
 ```
 
-__Key Considerations__
+__NB!__
 
-1. Dynamic size: The size can grow or shring as needed. This facilitates
-manipulating data without worrying about collections initial size.
+1. __Array__ type is with fixed size. Once it's created it's size cannot be
+changed in memory, so a new array should be created and assigned to the variable
+if changes have to be made.
 
-2. Additional functionality: Lists provide additional functionality for
-manipulating the elements.
+2. __List__ type have dynamic size which can grow or shrink as needed.
+Internally it works with array and if the size grows beyond the capacity a
+larger array is created.
 
-## Dictionary
+3. __List__ provide additional functionality for manipulating the elements.
+
+## Associative Array
 
 Collection of key-value pairs. Each element has a unique key and an associated
 value.
+
+__Dictionary__: C# type to handle associative arrays.
 
 __Sorted Dictionary__: A dictionary which keeps elements ordered by key.
 
@@ -214,72 +182,6 @@ phonebook.ContainsKey("John");                      // Check if key presents in
                                                     // collection
 phonebook.Remove("John");                           // Remove by key
 ```
-
-## LINQ
-
-LINQ (Language-Integrated Query) is a feature that facilitates working with data
-from different data sources. LINQ query can be written using either
-__query syntax__ or __method syntax__.
-
-__Three parts of LINQ query__:
-```csharp
-// 1. Data source.
-int[] numbers = [ 0, 1, 2, 3, 4 ];
-
-// 2. Query creation.
-var evenNums = numbers.Where(n => n % 2 == 0);
-
-// 3. Query execution.
-for (int n in evenNums)
-{
-    Console.WriteLine(n);
-}
-```
-
-__Query and Method syntax difference__:
-```csharp
-int[] nums = [ 1, 2, 3, 4, 5, 1, 2, 3 ];
-
-// Filtering query using query syntax
-var evenNums1 =
-    from n in nums
-    where n % 2 == 0
-    select n;
-
-// Filtering query using method syntax
-var evenNums2 = nums.Where(n => n % 2 == 0);
-
-// Ordering query using query syntax
-var descNums1 =
-    from n in nums
-    orderby n descending
-    select n;
-
-// Ordering query using method syntax
-var descNums2 = nums.OrderDescending();
-
-// Grouping query using query syntax
-var groupedNums1 =
-    from n in nums
-    group n by n;
-
-// Grouping query using method syntax
-var groupedNums = nums.GroupBy(n => n);
-```
-
-__Key Considerations__
-
-1. A LINQ __data source__ is any object that supports the generic
-__IEnumerable<T>__, or an interface that inherits from it, typically
-__IQueryable<T>__.
-
-2. A __query__ is executed with foreach. To force query execution and cache the
-result you can call ToList or ToArray methods.
-
-## Lambda expression
-
-Anonymous function. Often used to pass a function as argument without declaring
-it.
 
 ## Classes and Objects
 
@@ -301,11 +203,7 @@ class Point
 var point = new Point() { X = 5, Y = 10 };
 ```
 
-## Files and Directories
-
-C# provides classes (File and Directory) for working with files and directories.
-
-## Strings
+## Text Processing
 
 C# provides different ways to manipulate strings i.e. built in methods,
 __StringBuilder__ class and __Regex__ class.
@@ -314,10 +212,32 @@ __StringBuilder__: String is __immutable__ which can lead to performance issues
 when you need to concatenate multiple strings. __StringBuilder__ provides a
 __mutable__ buffer which allows efficient append, insert and remove operations.
 
+__Regex__: a way to match text by pattern.
+
+## Dictionary
+
+__Variable Span__: How long it takes for a variable to be used after its
+initialized. Always declare a variable as late as possible.
+
+__Allocation__: Allocation of memory for some data. When you set size to an
+array, memory is allocated for it.
+
+__Value Types__: Value types store their value directly in the memory allocated
+for the variable itself. They are copied by value, which means that when you
+copy a value type variable to another variable a copy of the data is made.
+
+__Reference Types__: Reference types store an address to the location where the
+data is stored. They are copied by reference, which means that when you copy the
+reference to another variable, both will point to same data.
+
+__Stack__: Is part of the computer memory, which is used to store and access
+small information. It is faster than the Heap.
+
+__Heap__: Is part of the computer memory, which is used to store and access
+large information. It is bigger in size than the Stack.
+
 __Mutability__: Whether the state of an object can be changed after creating it,
 or a new object should be created.
-
-__Regex__: a way to match text by pattern.
 
 ## Resources
 
