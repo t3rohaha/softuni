@@ -115,9 +115,17 @@ __Generic__: With specified type.
 
 __Non-generic__: Without specified type.
 
+## Resources
+
+[Stacks and Queues - Exercise](https://judge.softuni.org/Contests/Practice/Index/1447#0)
+
+[Multidimensional Arrays - Exercise](https://judge.softuni.org/Contests/Practice/Index/1455#0)
+
+[C# Advanced Regular Exam - 17 February 2024](https://judge.softuni.org/Contests/Practice/Index/4555#0)
+
 ## Questions
 
-### What would be the output of the following program?
+### 00 What would be the output of the following program?
 
 ```csharp
 var matrix = new int[3,3]
@@ -128,4 +136,11 @@ var matrix = new int[3,3]
 }
 
 Console.WriteLine(matrix.Count);
+```
+
+### 01 What would be the output of the following program?
+
+```csharp
+var anon = new { a = 0 };
+anon.a = 1;
 ```
