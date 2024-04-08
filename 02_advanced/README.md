@@ -2,9 +2,11 @@
 
 This course covers advanced data structures like
 [Stacks and Queues](#stacks-and-queues),
-[Multidimentional Arrays](#multidimentional-arrays) and advanced programming
-concepts like [Streams](#streams) and
-[Functional Programming](#functional-programming).
+[Multidimentional Arrays](#multidimentional-arrays), [Sets](#sets), 
+[Linked Lists](#linked-lists) and advanced programming concepts like
+[Generics](#generics), [Iterators and Comparators](#iterators-and-comparators),
+[Streams](#streams), [Functional Programming](#functional-programming) and
+[LINQ](#linq).
 
 ## Stacks and Queues
 
@@ -63,6 +65,45 @@ var threeDimensionalArr = new int[,,,]
 var topLeft = threeDimensionalArray[0, 0, 0];
 ```
 
+## Sets
+
+Collection that contains unique elements. C# provides __HashSet&lt;T&gt;__,
+which implements the matematical set concept and provides methods for operations
+like __union__, __intersection__ and __difference__.
+
+__Union__: All unique elements between two sets.
+
+__Intersection__: Elements that present between two sets.
+
+__Difference__: Elements that present in a set and don't present in compared
+set.
+
+```csharp
+var s1 = new HashSet<int> { 0, 0, 1, 2, 3 };    // 0, 1, 3, 5
+var s2 = new HashSet<int> { 0, 0, 2, 4, 6 };    // 0, 2, 4, 6
+
+var union = s1.Union(s2);                       // 0, 1, 3, 5, 2, 4, 6
+var intersection = s1.Intersect(s2);            // 0
+var diff = s1.Except(s2);                       // 1, 3, 5
+```
+
+## Linked Lists
+
+__Data structure__ where elements are stored in objects called __nodes__. Each
+node has two parts: data and reference to next node. C# provides the
+__LinkedList&lt;T&gt;__ which is a __doubly linked list__.
+
+__Singly Linked List__: each node contains data and reference to the next node.
+The last node points to null.
+
+__Doubly Linked List__: each node contains data, reference to next and previous
+node. This allows traversial of the list both forward and backward.
+
+__Circular Linked List__: each node contains data, reference to next and
+previous node. The last node points to first node forming a circle.
+
+__Examples__: [LinkedList&lt;T&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.linkedlist-1?view=net-8.0)
+
 ## Stream I/O
 
 Refer to transfer of data either from or to storage. .NET offers different
@@ -109,11 +150,80 @@ __Func&lt;T, TResult&gt;__: Predefined delegate which always returns value.
 
 __Action&lt;T&gt;__: predefined delegate that doesn't return value.
 
+## LINQ
+
+LINQ (Language-Integrated Query) is a feature that facilitates working with data
+from different data sources. LINQ query can be written using either
+__query syntax__ or __method syntax__.
+
+__Three parts of LINQ query__:
+```csharp
+// 1. Data source.
+int[] numbers = [ 0, 1, 2, 3, 4 ];
+
+// 2. Query creation.
+var evenNums = numbers.Where(n => n % 2 == 0);
+
+// 3. Query execution.
+for (int n in evenNums) Console.WriteLine(n);
+```
+
+__Query and Method syntax difference__:
+```csharp
+int[] nums = [ 1, 2, 3, 4, 5, 1, 2, 3 ];
+
+// Filtering query using query syntax
+var evenNums1 =
+    from n in nums
+    where n % 2 == 0
+    select n;
+
+// Filtering query using method syntax
+var evenNums2 = nums.Where(n => n % 2 == 0);
+
+// Ordering query using query syntax
+var descNums1 =
+    from n in nums
+    orderby n descending
+    select n;
+
+// Ordering query using method syntax
+var descNums2 = nums.OrderDescending();
+
+// Grouping query using query syntax
+var groupedNums1 =
+    from n in nums
+    group n by n;
+
+// Grouping query using method syntax
+var groupedNums = nums.GroupBy(n => n);
+```
+
+__NB!__
+
+1. A LINQ __data source__ is any object that supports the generic
+__IEnumerable<T>__, or an interface that inherits from it, typically
+__IQueryable<T>__.
+
+2. A __query__ is executed with foreach. To force query execution and cache the
+result you can call ToList or ToArray methods.
+
+## Generics
+
+## Iterators and Comparators
+
 ## Dictionary
 
 __Generic__: With specified type.
 
 __Non-generic__: Without specified type.
+
+__Lambda expression__: anonymous function.
+
+__Collection__: A group of elements.
+
+__Data Structure__: A way of organizing data, so it can be easily accessed and
+manipulated.
 
 ## Resources
 
