@@ -1,6 +1,8 @@
-public static class DiagonalDifference
+namespace DiagonalDifference;
+
+class Program
 {
-    public static void Run()
+    static void Main()
     {
         int n =  int.Parse(Console.ReadLine()!);    // Size of square matrix
 
@@ -34,10 +36,3 @@ public static class DiagonalDifference
         Console.WriteLine(Math.Abs(d1Sum - d2Sum));
     }
 }
-
-/*
-[00][01][02][03]
-[10][11][12][13]
-[20][21][22][23]
-[30][31][32][33]
-*/

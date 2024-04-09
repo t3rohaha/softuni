@@ -1,6 +1,8 @@
-public static class BasicQueueOperations
+namespace BasicQueueOperations;
+
+class Program
 {
-    public static void Run()
+    static void Main()
     {
         int[] input = Console
         .ReadLine()!

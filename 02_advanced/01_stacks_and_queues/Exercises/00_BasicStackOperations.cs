@@ -1,6 +1,8 @@
-public static class BasicStackOperations
+namespace BasicStackOperations;
+
+class Program
 {
-    public static void Run()
+    static void Main()
     {
         int[] input = Console
         .ReadLine()!
