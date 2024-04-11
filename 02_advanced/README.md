@@ -4,9 +4,8 @@ This course covers advanced data structures like
 [Stacks and Queues](#stacks-and-queues),
 [Multidimentional Arrays](#multidimentional-arrays), [Sets](#sets), 
 [Linked Lists](#linked-lists) and advanced programming concepts like
-[Generics](#generics), [Iterators and Comparators](#iterators-and-comparators),
-[Streams](#streams), [Functional Programming](#functional-programming) and
-[LINQ](#linq).
+[Generics](#generics), [Iterators](#iterators), [Streams](#streams),
+[Functional Programming](#functional-programming) and [LINQ](#linq).
 
 ## Stacks and Queues
 
@@ -210,26 +209,62 @@ result you can call ToList or ToArray methods.
 
 ## Generics
 
-## Iterators and Comparators
+C# feature which enables interfaces, classes, methods and delegates to be
+defined with the types of data they will work with.
+
+## Iterators
+
+C# feature which allows creating classes that can be enumerated.
+
+__IEnumerable__: base interface for creating classes that can be enumerated.
+
+__Iterator method__: a method that returns __IEnumerable__ and contains one or
+more __yield__ statements.
+
+__yield__: is a keyword used inside __iterator methods__. It returns a value and
+suspends method execution until __foreach__ asks for another value.
+
+```csharp
+class Program
+{
+    static void Main()
+    {
+        foreach (int number in GetNumbers())
+            Console.WriteLine(number);
+    }
+
+    static IEnumerable<int> GetNumbers()
+    {
+        yield return 1;
+        yield return 2;
+        yield return 3;
+    }
+}
+```
 
 ## Dictionary
 
-__Generic__: With specified type.
+__Generic__: with specified type.
 
-__Non-generic__: Without specified type.
+__Non-generic__: without specified type.
 
 __Lambda expression__: anonymous function.
 
-__Collection__: A group of elements.
+__Collection__: a group of elements.
 
-__Data Structure__: A way of organizing data, so it can be easily accessed and
+__Data Structure__: a way of organizing data, so it can be easily accessed and
 manipulated.
+
+__IComparer&lt;T&gt;__: interface that defines a method __Compare()__, which
+compares two objects of type __T__.
 
 ## Resources
 
 [Stacks and Queues - Exercise](https://judge.softuni.org/Contests/Practice/Index/1447#0)
 
 [Multidimensional Arrays - Exercise](https://judge.softuni.org/Contests/Practice/Index/1455#0)
+
+[Sets and Dictionaries Advanced - Exercise](https://judge.softuni.org/Contests/Practice/Index/1466#0)
 
 [C# Advanced Regular Exam - 17 February 2024](https://judge.softuni.org/Contests/Practice/Index/4555#0)
 
