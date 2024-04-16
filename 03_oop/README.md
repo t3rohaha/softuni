@@ -33,13 +33,38 @@
 
 ## INHERITANCE
 
-A mechanism that allows a `derived` class to inherit all the `members` of a
-`base` class except it's `constructor`.
+A mechanism that allows a `child` class to inherit `data and functionality` from
+a `parent` class.
+
+- `Sealed class` a class that cannot be inherited further.
+
+### Notes
+
+- Classes can inherit only one class.
+- Classes can inherit behaviour from multiple interfaces.
+- All `members` of a class can be inherited.
+
+## ENCAPSULATION
+
+Practice of `grouping` related `data and functionality` in a single unit and 
+controlling the access to them. 
+
+- __Classes__ are used to group related data and functionality.
+
+- __Access modifiers__ control the access to the data and functionality.
+
+### Notes
+
+- If a mutable property has public getter and private setter, it's still
+accessible.
+
+## ABSTRACTION
+
+Practice of `exposing` related `data and functionality` to a user and hiding the
+implementation details.
 
 - `Abstract class` a class that is designed to be a base class. It cannot be
 instantiated.
-
-- `Sealed class` a class that cannot be inherited further.
 
 - `Interface` provides related functionality to classes.
     - By convention begin with capital `I`
@@ -51,19 +76,4 @@ instantiated.
 
 ### Notes
 
-- Classes can inherit only one class.
-- Classes can inherit behaviour from multiple interfaces.
-
-## ENCAPSULATION
-
-Practice of grouping related data and functionality and controlling the access
-to them. 
-
-- __Classes__ are used to group related data and functionality.
-
-- __Access modifiers__ control the access to the data and functionality.
-
-### Notes
-
-- If a mutable property has public getter and private setter, it's still
-accessible.
+- Do NOT provide abstraction, unless it is tested by implementing it.
