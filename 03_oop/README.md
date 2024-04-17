@@ -34,7 +34,8 @@
 ## INHERITANCE
 
 A mechanism that allows a `child` class to inherit `data and functionality` from
-a `parent` class.
+a `parent` class. The child class can reuse and extend the functionality of the
+parent class by adding new methods or overriding existing ones.
 
 - `Sealed class` a class that cannot be inherited further.
 
@@ -46,8 +47,12 @@ a `parent` class.
 
 ## ENCAPSULATION
 
-Practice of `grouping` related `data and functionality` in a single unit and 
-controlling the access to them. 
+Encapsulation is `grouping data and methods` that operate on the data into a
+single unit. This concept prevents direct access to objects internal state and
+ensures that data is accessed and modified through controlled methods. In C#
+encapsulation is achieved with the use of `classes` to group the data and
+functionality and `access modifiers` to control the access to the data and
+functionality.
 
 - __Classes__ are used to group related data and functionality.
 
@@ -60,8 +65,10 @@ accessible.
 
 ## ABSTRACTION
 
-Practice of `exposing` related `data and functionality` to a user and hiding the
-implementation details.
+Abstraction is the process of `hiding` implementation details and `exposing`
+only the essential features of an object. It allows developers to focus on what
+an object does rather than how it does it. In C# abstraction is achieved with
+the use of `abstract classes` and `interfaces`.
 
 - `Abstract class` a class that is designed to be a base class. It cannot be
 instantiated.
@@ -77,3 +84,20 @@ instantiated.
 ### Notes
 
 - Do NOT provide abstraction, unless it is tested by implementing it.
+
+## POLYMORPISM
+
+Polymorphism, which means `"many forms"`, allows objects of different classes to
+be treated as objects of common superclass. It enables a single interface to
+represent multiple implementations and allows methods to behave differently
+based on the objects they operate on. Polymorphism is typically achieved through
+`method overriding` (runtime polymorphism) and `method overloading` (runtime
+polymorphism).
+
+### Notes
+
+- In your source code you can call a method in a base class, and cause child
+class overrided method to be executed.
+
+- In C#, every type is polymorphic because all types, including user-defined
+types, inherit from Object.
