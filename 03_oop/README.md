@@ -101,3 +101,29 @@ class overrided method to be executed.
 
 - In C#, every type is polymorphic because all types, including user-defined
 types, inherit from Object.
+
+## SOLID
+
+Acronym for five principles in OOP.
+
+- `Single Responsibility Principle` A class should have only one reason to
+change, meaning that it should have one job or responsibility.
+
+- `Open/Closed Principle` Software entities (classes, modules, funcitons etc.)
+should be open for extension but closed for modification. In other words you
+should be able to extend the behavior of a system without modifying existing
+code.
+
+- `Liskov Substitution Principle` Objects of a superclass should be replaceable
+with objects of its subclasses without affecting the correctness of the program.
+This means that objects should be substitutable for their base types.
+
+- `Interface Segregation Principle` Clients should not be forced to depend on
+interfaces they don't use. This principle states that you should prefer small,
+cohesive interfaces over large, monolithic ones.
+
+- `Depenency Inversion Principle` High level modules should not depend on low
+level modules, both should depend on abstractions. Abstractions should not
+depend on details, details should depend on abstractions. This principle
+promotes loose coupling between modules by ensuring the high-level modules
+depend on abstract interfaces rather then concrete implementations.
