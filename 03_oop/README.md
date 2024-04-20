@@ -106,24 +106,49 @@ types, inherit from Object.
 
 Acronym for five principles in OOP.
 
-- `Single Responsibility Principle` A class should have only one reason to
-change, meaning that it should have one job or responsibility.
+- `SRP` A class should have only one reason to change, meaning that it should
+have one job or responsibility. We want to increase the `cohesion` between
+things that chage for the same reasons, and we want to decrease the coupling
+between those things that cange for different reasons.
+    - Who is the program responsible to?
 
-- `Open/Closed Principle` Software entities (classes, modules, funcitons etc.)
-should be open for extension but closed for modification. In other words you
-should be able to extend the behavior of a system without modifying existing
-code.
+- `OCP` Software entities (classes, modules, funcitons etc.) should be open for
+extension but closed for modification. In other words you should be able to
+extend the behavior of a system without modifying existing code.
+    - Plugin architecture.
 
-- `Liskov Substitution Principle` Objects of a superclass should be replaceable
-with objects of its subclasses without affecting the correctness of the program.
-This means that objects should be substitutable for their base types.
+- `LSP` Objects of a superclass should be replaceable with objects of its
+subclasses without affecting the correctness of the program.  This means that
+objects should be substitutable for their base types.
 
-- `Interface Segregation Principle` Clients should not be forced to depend on
-interfaces they don't use. This principle states that you should prefer small,
-cohesive interfaces over large, monolithic ones.
+- `ISP` Clients should not be forced to depend on interfaces they don't use.
+This principle states that you should prefer small, cohesive interfaces over
+large, monolithic ones.
 
-- `Depenency Inversion Principle` High level modules should not depend on low
-level modules, both should depend on abstractions. Abstractions should not
-depend on details, details should depend on abstractions. This principle
-promotes loose coupling between modules by ensuring the high-level modules
-depend on abstract interfaces rather then concrete implementations.
+- `DIP` High level modules should not depend on low level modules, both should
+depend on abstractions. Abstractions should not depend on details, details
+should depend on abstractions. This principle promotes loose coupling between
+modules by ensuring the high-level modules depend on abstract interfaces rather
+then concrete implementations.
+
+- [SRP](https://blog.cleancoder.com/uncle-bob/2014/05/08/SingleReponsibilityPrinciple.html),
+[OCP](https://blog.cleancoder.com/uncle-bob/2014/05/12/TheOpenClosedPrinciple.html)
+
+## Reflection
+
+A Feature that allows to inspect and manipulate code (assemblies, types,
+methods, fields etc.). Some key features:
+
+- `Type Inspection` Allows you to obtain information about types and its
+members. The `Type` class is used for this purposes.
+
+- `Dynamic Invokation` Allows you to create instances of types, invoke methods
+etc... `Activator` class is used for this purposes.
+
+- `Assembly Loading` Allows you to load assemblies, inspect and manipulate
+types from different assemblies.
+
+## Attributes
+
+A class that derives from Attribute class which provides metadata to code
+(assemblies, types, methods, fields etc.).
