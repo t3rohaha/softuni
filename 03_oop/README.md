@@ -151,4 +151,5 @@ types from different assemblies.
 ## Attributes
 
 A class that derives from Attribute class which provides metadata to code
-(assemblies, types, methods, fields etc.).
+(assemblies, types, methods, fields etc.). Public fields and properties that
+are not constructor parameters are added as named parameters.
