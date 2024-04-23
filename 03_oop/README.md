@@ -153,3 +153,19 @@ types from different assemblies.
 A class that derives from Attribute class which provides metadata to code
 (assemblies, types, methods, fields etc.). Public fields and properties that
 are not constructor parameters are added as named parameters.
+
+## Unit Testing
+
+- `Fake` Generic term to describe, stub or a mock.
+
+- `Mock` Fake object that the test is asserted against.
+
+- `Stub` Fake object that the test is not asserted against. It's usually a
+dependency that should be setup.
+
+- `Triple A Pattern`
+    - `Arrange` Setup the object to be tested.
+    - `Act` Execute the operation and get the result.
+    - `Assert` Assert the result is equal to the expected result.
+
+- `Naming convention` MethodName_Condition_ExpectedResult
