@@ -169,3 +169,10 @@ dependency that should be setup.
     - `Assert` Assert the result is equal to the expected result.
 
 - `Naming convention` MethodName_Condition_ExpectedResult
+
+## xUnit
+
+- `Fact` Attribute to run a single test.
+
+- `Theory` Attribute that allows passing parameters to tests using `InlineData`
+attribute.

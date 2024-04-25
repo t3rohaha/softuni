@@ -1,4 +1,4 @@
-namespace ShoppingSpree.Models;
+namespace ShoppingSpree;
 
 public class Person
 {

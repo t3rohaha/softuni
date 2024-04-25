@@ -1,4 +1,4 @@
-namespace ShoppingSpree.Models;
+namespace ShoppingSpree;
 
 public class Product
 {
@@ -24,8 +24,8 @@ public class Product
 
     private void SetPrice(decimal value)
     {
-        if (value < 0)
-            throw new ArgumentException("Price cannot be negative!");
+        if (value <= 0)
+            throw new ArgumentException("Price cannot be zero or negative!");
         else _price = value;
     }
 }
