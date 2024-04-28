@@ -148,20 +148,13 @@ etc... `Activator` class is used for this purposes.
 - `Assembly Loading` Allows you to load assemblies, inspect and manipulate
 types from different assemblies.
 
-## Attributes
+### Attributes
 
 A class that derives from Attribute class which provides metadata to code
 (assemblies, types, methods, fields etc.). Public fields and properties that
 are not constructor parameters are added as named parameters.
 
 ## Unit Testing
-
-- `Fake` Generic term to describe, stub or a mock.
-
-- `Mock` Fake object that the test is asserted against.
-
-- `Stub` Fake object that the test is not asserted against. It's usually a
-dependency that should be setup.
 
 - `Triple A Pattern`
     - `Arrange` Setup the object to be tested.
@@ -170,9 +163,32 @@ dependency that should be setup.
 
 - `Naming convention` MethodName_Condition_ExpectedResult
 
-## xUnit
+### xUnit
 
 - `Fact` Attribute to run a single test.
 
 - `Theory` Attribute that allows passing parameters to tests using `InlineData`
 attribute.
+
+- `MemberData` Attribute that allows passing parameters to tests using members
+that return IEnumerable<object[]>.
+
+- `ClassData` Attribute that allows passing parameters to tests using classes
+that implement IEnumerable<object[]>. Both Class and Member Data attributes
+are used in more complex scenarios like reading the test parameters from an
+external file.
+
+- `Mocking` Simulating the behaviour of an external dependency.
+
+- `Fake` Generic term to describe, stub or a mock.
+
+- `Mock` Fake object that the test is asserted against.
+
+- `Stub` Fake object that the test is not asserted against. It's usually a
+dependency that should be setup.
+
+### Notes
+
+- In xUnit for each test a new class is created, so the logic inside a
+constructor is executed before each test, and the logic inside a dispose
+method is executed after each test.
