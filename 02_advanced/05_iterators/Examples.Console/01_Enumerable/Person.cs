@@ -1,6 +1,5 @@
-namespace Person;
+namespace Enumerable;
 
-// Simple business object.
 public class Person
 {
     public string firstName;
@@ -10,5 +9,10 @@ public class Person
     {
         this.firstName = firstName;
         this.lastName = lastName;
+    }
+
+    public override string ToString()
+    {
+        return $"{firstName} {lastName}";
     }
 }

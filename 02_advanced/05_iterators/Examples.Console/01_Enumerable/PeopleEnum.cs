@@ -1,4 +1,4 @@
-namespace Person;
+namespace Enumerable;
 using System.Collections;
 
 public class PeopleEnum : IEnumerator
@@ -11,9 +11,7 @@ public class PeopleEnum : IEnumerator
         _people = people;
     }
 
-    public Person Current => _people[_position];
-
-    object IEnumerator.Current => Current;
+    object IEnumerator.Current => _people[_position];
 
     public bool MoveNext()
     {
