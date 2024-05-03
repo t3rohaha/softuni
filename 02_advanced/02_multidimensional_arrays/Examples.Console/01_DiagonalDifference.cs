@@ -1,8 +1,8 @@
 namespace DiagonalDifference;
 
-class Program
+public class Program
 {
-    static void Main()
+    public static void Main()
     {
         int n =  int.Parse(Console.ReadLine()!);    // Size of square matrix
 
@@ -17,9 +17,7 @@ class Program
             .ToArray();
 
             for (var c = 0; c < n; c++)
-            {
                 matrix[r,c] = row[c];
-            }
         }
 
         int d1Sum = 0;
