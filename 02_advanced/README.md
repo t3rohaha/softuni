@@ -89,7 +89,8 @@ be returned from function and be set to variable.
 `Pure functions` Functions that have no side affects and always return the same
 value for the same input, without modifying external data.
 
-`Delegates` Enable you to treat methods as objects.
+`Delegates` A type that represents reference to methods. Enable you to treat
+methods as objects.
 
 `Func<T, TResult>` Predefined delegate which always return value.
 
