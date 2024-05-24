@@ -118,3 +118,49 @@ DROP TABLE Table;
 ### Notes
 
 - Data types in SQL Server are lowercase.
+
+
+
+
+
+## CRUD
+
+### Read
+
+- `SELECT` Allows reading data from specific table.
+
+- `AS` Allows creating an alias for selected column.
+
+- `WHERE` Allows filtering of selected data.
+
+- `ORDER BY` Allows ordering by column, `ASC` or `DESC`.
+
+- `Views` Named (saved) queries. `CREATE VIEW v_ViewName AS` etc...
+
+### Write Update Delete
+
+- `INSERT` Allows writing data in specific table.
+
+- `DELETE` Deletes rows from specific table.
+    - `WHERE` Frequently used with. If not all the rows will be deleted.
+
+- `UPDATE` Updates rows from specific table.
+    - `SET` Specifies the update to be made.
+    - `WHERE` Frequently used with. If not all the rows will be updated.
+
+### Operators
+
+- `Comparison` >, <, >=, <=, =
+- `Logical` AND, OR, NOT
+- `Pattern matching` LIKE, IN, IS NULL, IS NOT NULL
+- `Other` BETWEEN
+
+### Notes
+
+- `Projection` Specifying columns that should be selected.
+
+- `Selection` Specifying condition, which records should be selected.
+
+- `Join` Allow retrieving data from multiple tables which are related.
+
+- `INSERT` and `SELECT` can be combined to insert data from existing table.
