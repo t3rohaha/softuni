@@ -38,11 +38,7 @@ This section refers on how to customize database behavior.
 - `SQL Server` is one type of RDBMS. It uses `Transact-SQL` for communication
 which is extension of `SQL` and provides additional functionality to it.
 
-
-
-
-
-## Data Definition
+## DATA DEFINITION
 
 Describe the structure of the database.
 
@@ -119,48 +115,75 @@ DROP TABLE Table;
 
 - Data types in SQL Server are lowercase.
 
-
-
-
-
 ## CRUD
 
-### Read
+`READ` (SELECT, AS, ORDER BY, WHERE)
 
-- `SELECT` Allows reading data from specific table.
+`WRITE` (INSERT)
 
-- `AS` Allows creating an alias for selected column.
+`UPDATE` (ALTER, SET, WHERE)
 
-- `WHERE` Allows filtering of selected data.
-
-- `ORDER BY` Allows ordering by column, `ASC` or `DESC`.
-
-- `Views` Named (saved) queries. `CREATE VIEW v_ViewName AS` etc...
-
-### Write Update Delete
-
-- `INSERT` Allows writing data in specific table.
-
-- `DELETE` Deletes rows from specific table.
-    - `WHERE` Frequently used with. If not all the rows will be deleted.
-
-- `UPDATE` Updates rows from specific table.
-    - `SET` Specifies the update to be made.
-    - `WHERE` Frequently used with. If not all the rows will be updated.
-
-### Operators
-
-- `Comparison` >, <, >=, <=, =
-- `Logical` AND, OR, NOT
-- `Pattern matching` LIKE, IN, IS NULL, IS NOT NULL
-- `Other` BETWEEN
+`DELETE` (DELETE, WHERE)
 
 ### Notes
 
-- `Projection` Specifying columns that should be selected.
+`Projection` Specifying columns that should be selected.
 
-- `Selection` Specifying condition, which records should be selected.
+`Selection` Specifying condition, which records should be selected.
 
-- `Join` Allow retrieving data from multiple tables which are related.
+`Join` Allow retrieving data from multiple tables which are related.
 
-- `INSERT` and `SELECT` can be combined to insert data from existing table.
+`INSERT` and `SELECT` can be combined to insert data from existing table.
+
+## VIEWS
+
+Views are named (saved) queries. `CREATE VIEW v_ViewName AS` etc...
+
+## OPERATORS
+
+`Comparison` >, <, >=, <=, =
+
+`Logical` AND, OR, NOT
+
+`Pattern matching` LIKE, IN, IS NULL, IS NOT NULL
+
+`Other` BETWEEN
+
+## FUNCTIONS
+
+`AGGREGATE` (SUM, AVG, COUNT, MIN, MAX)
+
+`STRING` (LEN, UPPER, LOWER, SUBSTRING, REPLACE, LTRIM, RTRIM, CONCAT, REVERSE)
+
+`DATE AND TIME` (GETDATE, DATEADD, DATEDIFF, DATENAME, CONVERT, FORMAT)
+
+`MATH` (ABS, CEILING, FLOOR, ROUND, POWER, SQRT)
+
+`SYSTEM` (@@IDENTITY, @@ERROR, @@ROWCOUNT, @@SCOPE_IDENTITY)
+
+`CONVERSION` (CAST, CONVERT)
+
+`LOGICAL` (ISNULL, COALESCE)
+
+`RANKING` (ROW_NUMBER, RANK, DENSE_RANK, NTILE)
+
+`OTHER` (OFFSET, FETCH)
+
+### Notes
+
+Most of the functions (if not all of them) use 1 as start index.
+
+## WILDCARDS
+
+SQL Server wildcards are special characters used in the LIKE operator's pattern
+matching.
+
+`%` Zero, one, or more characters ('Jo%' matches John, Joe, Joanna).
+
+`_` Single character ('J_n' matches Jan, Jen, Jon).
+
+`[...]` Set or range of characters ([Jj] matches John, john).
+
+`[^...]` Any character not in set or range.
+
+`[a-c]` Any character in range ([a-c] matches a, b, c).
