@@ -187,3 +187,25 @@ matching.
 `[^...]` Any character not in set or range.
 
 `[a-c]` Any character in range ([a-c] matches a, b, c).
+
+## QUERY EXECUTION ORDER
+
+01. `FROM`
+
+02. `ON`
+
+03. `OUTER`
+
+04. `WHERE`
+
+05. `GROUP BY`
+
+06. `HAVING` - Filter data on condition after grouping.
+
+07. `SELECT`
+
+08. `DISTINCT`
+
+09. `ORDER BY`
+
+10. `TOP/LIMIT`
