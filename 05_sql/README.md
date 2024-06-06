@@ -66,7 +66,7 @@ Describe the structure of the database.
 - `datetime2` Date and time with precision of 100 nanoseconds.
 - `smalldatetime` Date and time with precision of 1 min.
 
-### Custom Properties
+### Constraints
 
 `PRIMARY KEY` Indicates PK, unique by default.
 
@@ -209,3 +209,38 @@ matching.
 09. `ORDER BY`
 
 10. `TOP/LIMIT`
+
+## STEPS IN DATABASE DESIGN
+
+01. `Entities`
+
+02. `Columns`
+
+03. `Primary keys`
+
+04. `Relationships`
+
+05. `Constraints`
+
+06. `Seed`
+
+## TABLE RELATIONS
+
+`One-to-many` - e.g. one country has many towns, one town has one country.
+
+`Many-to-many` - e.g. one student has many courses, one course has many
+students. Uses `join/mapping table` which references both primary keys.
+
+`One-to-one` - e.g. one country has one capital. 
+
+```sql
+CONSTRAINT FK_Country_Capital FOREIGN KEY (CapitalID) REFERENCES Cities(Id);
+```
+
+## JOIN
+
+With `JOIN` statement we can get data from two tables simultaneously.
+
+```sql
+SELECT * FROM Towns JOIN Countries ON Countries.Id = Towns.CountryId;
+```
