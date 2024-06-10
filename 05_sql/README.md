@@ -241,6 +241,24 @@ CONSTRAINT FK_Country_Capital FOREIGN KEY (CapitalID) REFERENCES Cities(Id);
 
 With `JOIN` statement we can get data from two tables simultaneously.
 
-```sql
-SELECT * FROM Towns JOIN Countries ON Countries.Id = Towns.CountryId;
-```
+`INNER JOIN` - Takes all rows that are not null in both tables.
+
+`LEFT OUTER JOIN` - Take all rows from LEFT, and fill nulls to RIGHT.
+
+`RIGHT OUTER JOIN` - Take all rows from RIGHT, and fill nulls to LEFT.
+
+`FULL OUTER JOIN`
+
+`CROSS JOIN`
+
+### Notes
+
+`Cartesian product` - All possible combinations between the elemets of two sets.
+This is the result when data from multiple tables are taken without a valid
+JOIN.
+
+## CTE
+
+Common table expression is a query which result can be used as source for
+another query. It can be considered as a named subquery. To write CTE we begin
+with `WITH` then `CTE_Name` followed by `AS ()` which contains the subquery.
