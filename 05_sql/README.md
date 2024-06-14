@@ -30,7 +30,7 @@ This section refers on how to customize database behavior.
 
 - `Indices` Used to improve the speed of data retrieval on a table.
 - `Functions` Take parameters perform operations and return result.
-- `Procedures` Function that does not return value.
+- `Procedures` Series of operations, including querying and modifying the db.
 - `Triggers` Watch for activity in the database and react to it.
 
 ### Notes
