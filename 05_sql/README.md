@@ -262,3 +262,64 @@ JOIN.
 Common table expression is a query which result can be used as source for
 another query. It can be considered as a named subquery. To write CTE we begin
 with `WITH` then `CTE_Name` followed by `AS ()` which contains the subquery.
+
+# TRANSACTIONS
+
+Transactions are a set of database operations executed as a whole. If one
+operation fail, the whole transaction is cancelled and a `ROLLBACK` is made
+to the starting point of the transaction. After `COMMIT` transaction becomes
+persistent. `ACID` is an acronym that describes the main properties of
+transactions. `Atomicity` means that either all of the operations succeed or
+none of them do. `Consistency` means that transactions cannot break rules
+already created for the database data. `Isolation` means that every transaction
+is executed independently from one another. `Durability` means that once
+committed, a transaction cannot be undone.
+
+```sql
+BEGIN TRY
+    BEGIN TRANSACTION;
+
+    UPDATE Accouts
+    SET Balance = Balance - @withdrawAmount
+    WHERE Id = @accountId;
+
+    COMMIT TRANSACTION;
+END TRY
+BEGIN CATCH
+    ROLLBACK TRANSACTION;
+END CATCH
+```
+
+## TRIGGERS
+
+Triggers are special types of stored procedures that automatically execute
+in response to certain events on a table or view. The data after performing
+the operation is not saved before the trigger executes.
+
+`DML` - Data Manipulation Language is INSERT, UPDATE, DELETE. DML events are
+triggered when manipulating the data in the database.
+
+`DDL` - Data Definition Language is CREATE, ALTER, DROP. DDL events are
+triggered after making changes to the structure of the database or its objects.
+that are triggered after one of these statements.
+
+`Logon` - Refers to the process of authentication and establishing connection
+with the database.
+
+`AFTER TRIGGER` - Executed after INSERT, UPDATE, DELETE. Can access updated or
+deleted rows.
+
+`INSTEAD OF TRIGGER` - Executed instead of the triggering operation, which
+allows overriding the default behavior of INSERT, UPDATE, DELETE.
+
+```sql
+CREATE TRIGGER tr_TriggerName
+ON TableName
+AFTER UPDATE
+AS
+BEGIN
+    SELECT *
+    FROM inserted i
+    JOIN deleted d ON d.Id = i.Id;
+END
+```
