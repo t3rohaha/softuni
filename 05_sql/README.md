@@ -1,143 +1,251 @@
-# SQL
+# SQL Server
 
-## RDBMS
+## Table of Contents
 
-Relational Database Management System is type of database management
-system which stores the data using `tables`, `rows` (records) and `columns`
-(fields). The tables can be related to each other using `foreign keys`.
+1. [RDBMS and SQL OVERVIEW](#rdbms-and-sql-overview)
+2. [DDL and DATA TYPES](#ddl-and-data-types)
+    1. [DATA TYPES](#data-types)
+    2. [CONSTRAINTS](#constraints)
 
-### SQL
+## RDBMS and SQL OVERVIEW
 
-Structured Query Language is a programming language used to communicate with
-RDBMS. SQL commands can be logically devided into four groups:
+**RDBMS** Relational Database Management System is a type of database management
+system which stores the data using tables, rows, columns. The tables can be
+related to each other using primary and foreign keys. 
 
-- `Data Definition` Describe the structure of our database (`CREATE`, `ALTER`).
-- `Data Manipulation` Store and Retrieve data (`SELECT`, `INSERT`, `UPDATE`).
-- `Data Control` Define who can access the data (`GRANT`, `REVOKE`).
-- `Transaction Control` Bundle operations, allow rollback (`BEGIN`, `COMMIT`).
+**TABLES** The main building block of the database, it contains rows, columns and
+cells.
 
-### Tables
+**ROWS** Represent a record or entity.
 
-The main building block of RDMBS.
+**COLUMNS** Define data type, properties and constraints.
 
-- `Rows` Represent a record or entity.
-- `Columns` Define data type, properties and constraints.
-- `Cell` Actual data.
+**CELLS** Actual data.
 
-### Programmability
+**SQL** Structured Query Language is a programming language used to communicate
+with RDBMS. SQL commands can be logically devided into four groups.
 
-This section refers on how to customize database behavior.
+**DATA DEFINITION** Create and update the database (`CREATE`, `ALTER`, `DROP`).
 
-- `Indices` Used to improve the speed of data retrieval on a table.
-- `Functions` Take parameters perform operations and return result.
-- `Procedures` Series of operations, including querying and modifying the db.
-- `Triggers` Watch for activity in the database and react to it.
+**DATA MANIPULATION** Add, update, retrieve data (`SELECT`, `INSERT`, `UPDATE`).
 
-### Notes
+**DATA CONTROL** Define who can access the data (`GRANT`, `REVOKE`).
 
-- `SQL Server` is one type of RDBMS. It uses `Transact-SQL` for communication
-which is extension of `SQL` and provides additional functionality to it.
+**TRANSACTION CONTROL** Bundle operations, allow rollback (`BEGIN`, `COMMIT`).
 
-## DATA DEFINITION
+**NB!** SQL Server is one type of RDBMS. It uses T-SQL for communication which is
+extension of SQL and provides additional functionality to it.
 
-Describe the structure of the database.
+## DDL and DATA TYPES
 
-### Data Types
+**DDL** Data Definition Language is a group of functionality used to create and
+modify a database.
 
-`Numeric`
-- `bit` Integer that can be 0, 1, or NULL.
-- `int` 32 bit signed integer.
-- `bigint` 64 bit signed integer.
-- `decimal(p, s)` Fixed precision and scale numbers.
-- `money` Monetary data.
+**DATABASE OBJECTS** Entities used to store, organize and manipulate data.
+Examples of database objects are tables, views, stored procedures, functions,
+triggers and more.
 
-`Strings`
-- `char(size)` Fixed size string.
-- `varchar(size)` Variable size string.
-- `nvarchar(size)` Unicode variable size string.
-- `text`, `ntext` Unlimited size string.
+**CREATE** Used to create database objects.
 
-`Binary`
-- `binary(size)` Fixed length sequence of bits.
-- `varbinary(size)` Sequence of bits (1b - 2GB).
+**ALTER** Used to modify the structure of an existing database object.
 
-`Date and Time`
-- `date` Date in range 0001-01-01 to 9999-12-31.
-- `datetime2` Date and time with precision of 100 nanoseconds.
-- `smalldatetime` Date and time with precision of 1 min.
+**DROP** Used to delete existing database objects.
 
-### Constraints
+**CONSTRAINT** Used to add rules to the database.
 
-`PRIMARY KEY` Indicates PK, unique by default.
+### DATA TYPES
 
-`FOREIGN KEY` Indicates FK, which reference PK in another table.
+**DATA TYPES** Used to describe the nature of the data being stored in a column.
 
-`IDENTITY` Autoincrement.
+**TYPE CONVERSION** SQL Server allows implicit and explicit type conversion.
 
-`UNIQUE` No repeating values in entire table.
+**PRECISION** The total number of digits in a number.
 
-`DEFAULT` Sets default value (otherwise null).
+**SCALE** The number of digits to the right of the decimal point.
 
-`CHECK` Value constraint.
+**BIT** Integer that can be 0 or 1.
 
-`NOT NULL` Required constraint.
+**INT** 32-bit signed integer.
 
-### Basic Queries
+**BIGINT** 64-bit signed integer.
+
+**DECIMAL(precision, scale)** Fixed precision and scale numbers.
+
+**MONEY** Monetary data values.
+
+**CHAR(size)** Fixed size string.
+
+**VARCHAR(size)** Variable size string.
+
+**NVARCHAR(size)** Unicode variable size string.
+
+**BINARY(size)** Fixed length sequence of bytes.
+
+**VARBINARY(size)** Variable length sequence of bytes.
+
+**DATE** Date in range 0001-01-01 to 9999-12-31.
+
+**DATETIME2** Date and time in format YYYY-MM-DD hh:mm:ss
+
+**XML** Allows storing xml in a structured format.
+
+**JSON** Allows storing json in a structured format.
+
+**NB!** By default all data types allow NULL unless specified otherwise with the
+NOT NULL constraint.
+
+### CONSTRAINTS
+
+**PRIMARY KEY** Indicates PK, unique by default.
+
+**FOREIGN KEY** Indicates FK, which reference PK in another table.
+
+**IDENTITY** Autoincrement.
+
+**UNIQUE** No repeating values in entire table.
+
+**DEFAULT** Sets default value (otherwise null).
+
+**CHECK** Value constraint.
+
+**NOT NULL** Required constraint.
 
 ```sql
--- Create database/table.
-CREATE DATABASE Database;
+-- Create database.
+CREATE DATABASE MyDatabase;
 
-CREATE TABLE Table
+-- Use MyDatabase
+USE MyDatabase;
+GO
+
+-- Create table.
+CREATE TABLE MyTable
 (
-    Id int IDENTITY PRIMARY KEY,
-    Name nvarchar(50) NOT NULL
+    Id int NOT NULL,
+    Name nvarchar(50) NOT NULL,
+    CONSTRAINT PK_Table_Id PRIMARY KEY (Id)
 );
 
--- Tables, columns, data types, constraints, relationships etc. can be altered.
-ALTER TABLE Table
-ADD Salary MONEY;
+-- Alter table to add new column.
+ALTER TABLE MyTable
+ADD Salary money NOT NULL;
 
+-- Add constraint to the new column.
 ALTER TABLE Table
-ADD CONSTRAINT ConstraintName
-CHECK (Column > 0);
+ADD CONSTRAINT CHK_Salary
+CHECK (Salary > 0);
 
 -- Delete all entries in table.
 TRUNCATE TABLE Table;
 
--- Delete database/table.
-DROP DATABASE Database;
-
+-- Delete table.
 DROP TABLE Table;
+
+-- Use master.
+USE master;
+GO
+
+-- Delete database.
+DROP DATABASE Database;
 ```
 
-### Notes
+## DML
 
-- Data types in SQL Server are lowercase.
+**DML** Data Manipulation Language is a group of functionality that allows CRUD
+operations on the data.
 
-## CRUD
+**INSERT** Adds new rows of data into a table.
 
-`READ` (SELECT, AS, ORDER BY, WHERE)
+**UPDATE** Modifies existing data within one or more rows in a table.
 
-`WRITE` (INSERT)
+**DELETE** Deletes one or more rows in a table.
 
-`UPDATE` (ALTER, SET, WHERE)
+**SELECT** Retrieves data from one or more tables.
 
-`DELETE` (DELETE, WHERE)
+**RESULT SET** The set of rows returned by query after it has been executed
+against the database.
 
-### Notes
+### STEPS IN DATABASE DESIGN
 
-`Projection` Specifying columns that should be selected.
+01. **TABLES** Represent the objects we want to store in the database.
 
-`Selection` Specifying condition, which records should be selected.
+02. **COLUMNS** Represent the data that define the object and we want to store.
 
-`Join` Allow retrieving data from multiple tables which are related.
+03. **PRIMARY KEYS** Constraints that meke each row unique.
 
-`INSERT` and `SELECT` can be combined to insert data from existing table.
+04. **RELATIONSHIPS** Constraints that specify how tables relate to each other.
 
-## VIEWS
+05. **CONSTRAINTS** Rules and restrictions on the data in a table.
 
-Views are named (saved) queries. `CREATE VIEW v_ViewName AS` etc...
+06. **SEED** Initial values used for auto-incrementing primary keys (not
+adding initial data to the database).
+
+```sql
+CREATE TABLE Students (
+    Id INT IDENTITY,
+    FullName NVARCHAR(100) NOT NULL,
+    CONSTRAINT PK_Students_Id PRIMARY KEY (Id)
+);
+
+CREATE TABLE Courses (
+    Id INT IDENTITY,
+    CourseName NVARCHAR(100) NOT NULL,
+    CONSTRAINT PK_Courses_Id PRIMARY KEY (Id)
+);
+
+CREATE TABLE Enrollments (
+    Id INT IDENTITY,
+    StudentId INT NOT NULL,
+    CourseId INT NOT NULL,
+    CONSTRAINT PK_Enrollments_Id PRIMARY KEY (StudentId, CourseId),
+    CONSTRAINT FK_Enrollments_StudentId FOREIGN KEY (StudentId) REFERENCES Students (Id)
+    CONSTRAINT FK_Enrollments_CourseId FOREIGN KEY (CourseId) REFERENCES Courses (Id)
+);
+
+INSERT INTO Students
+(FullName)
+VALUES
+('Frank Lampard'),
+('John Terry'),
+('Didier Drogba');
+
+INSERT INTO Courses
+(CourseName)
+VALUES
+('Defending 101'),
+('Passing 101'),
+('Scoring 101');
+
+INSERT INTO Enrollments
+(StudentId, CourseId)
+VALUES
+(1, 2),
+(2, 1),
+(3, 3);
+```
+
+### QUERY EXECUTION ORDER
+
+1. **FROM** Specifies the tables or views from which the data is retrieved.
+
+2. **ON** Adds criteria for a JOIN (e.g. Matching IDs).
+
+3. **OUTER** LEFT/RIGHT/FULL JOIN Retrieves rows that meet and don't meet the
+JOIN criteria.
+
+4. **WHERE** Adds criteria for the rows retrieved.
+
+5. **GROUP BY** Groups rows by columns with same values into summary rows.
+
+6. **HAVING** Add criteria after grouping.
+
+7. **SELECT** Retrieves column or expression from result set.
+
+8. **DISTINCT** Removes duplicate rows from result set.
+
+9. **ORDER BY** Orders the result set by specified column or expression.
+
+10. **TOP/LIMIT** Limits the the rows returned in a result set.
 
 ## OPERATORS
 
@@ -188,41 +296,6 @@ matching.
 
 `[a-c]` Any character in range ([a-c] matches a, b, c).
 
-## QUERY EXECUTION ORDER
-
-01. `FROM`
-
-02. `ON`
-
-03. `OUTER`
-
-04. `WHERE`
-
-05. `GROUP BY`
-
-06. `HAVING` - Filter data on condition after grouping.
-
-07. `SELECT`
-
-08. `DISTINCT`
-
-09. `ORDER BY`
-
-10. `TOP/LIMIT`
-
-## STEPS IN DATABASE DESIGN
-
-01. `Entities`
-
-02. `Columns`
-
-03. `Primary keys`
-
-04. `Relationships`
-
-05. `Constraints`
-
-06. `Seed`
 
 ## TABLE RELATIONS
 
@@ -262,6 +335,15 @@ JOIN.
 Common table expression is a query which result can be used as source for
 another query. It can be considered as a named subquery. To write CTE we begin
 with `WITH` then `CTE_Name` followed by `AS ()` which contains the subquery.
+
+# Programmability
+
+This section refers on how to customize database behavior.
+
+- `Indices` Used to improve the speed of data retrieval on a table.
+- `Functions` Take parameters perform operations and return result.
+- `Procedures` Series of operations, including querying and modifying the db.
+- `Triggers` Watch for activity in the database and react to it.
 
 # TRANSACTIONS
 
