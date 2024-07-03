@@ -3,9 +3,22 @@
 ## Table of Contents
 
 1. [RDBMS and SQL OVERVIEW](#rdbms-and-sql-overview)
-2. [DDL and DATA TYPES](#ddl-and-data-types)
+2. [DDL](#ddl-and-data-types)
     1. [DATA TYPES](#data-types)
     2. [CONSTRAINTS](#constraints)
+    3. [RELATIONS](#relations)
+    4. [STEPS IN DATABASE DESIGN](#steps-in-database-design)
+3. [DML](#dml)
+    1. [QUERY EXECUTION ORDER](#query-execution-order)
+    2. [OPERATORS](#operators)
+    3. [BUILT-IN FUNCTIONS](#built-in-functions)
+    4. [RANKING](#ranking)
+4. [PROGRAMMABILITY](#programmability)
+    1. [CTE](#cte)
+    2. [FUNCTIONS](#functions)
+    3. [PROCEDURES](#procedures)
+    4. [TRIGGERS](#triggers)
+    5. [TRANSACTIONS](#transactions)
 
 ## RDBMS and SQL OVERVIEW
 
@@ -110,43 +123,76 @@ NOT NULL constraint.
 
 **NOT NULL** Required constraint.
 
-```sql
--- Create database.
-CREATE DATABASE MyDatabase;
+### RELATIONS
 
--- Use MyDatabase
-USE MyDatabase;
+**ONE TO MANY** e.g. one country has many towns, one town has one country.
+
+**MANY TO MANY** e.g. one student has many courses, one course has many
+students. Uses `join/mapping table` which references both primary keys.
+
+**ONE TO ONE** e.g. one country has one capital. 
+
+### STEPS IN DATABASE DESIGN
+
+01. **TABLES** Represent the objects we want to store in the database.
+
+02. **COLUMNS** Represent the data that define the object and we want to store.
+
+03. **PRIMARY KEYS** Constraints that meke each row unique.
+
+04. **RELATIONSHIPS** Constraints that specify how tables relate to each other.
+
+05. **CONSTRAINTS** Rules and restrictions on the data in a table.
+
+06. **SEED** Initial values used for auto-incrementing primary keys (not
+adding initial data to the database).
+
+```sql
+CREATE DATABASE [UniversityDB];
 GO
 
--- Create table.
-CREATE TABLE MyTable
-(
-    Id int NOT NULL,
-    Name nvarchar(50) NOT NULL,
-    CONSTRAINT PK_Table_Id PRIMARY KEY (Id)
+USE [UniversityDB];
+GO
+
+CREATE TABLE [Students] (
+    Id INT IDENTITY,
+    FullName NVARCHAR(100) NOT NULL,
+    CONSTRAINT PK_Students_Id PRIMARY KEY (Id)
+);
+
+CREATE TABLE [Courses] (
+    Id INT IDENTITY,
+    CourseName NVARCHAR(100) NOT NULL,
+    CONSTRAINT PK_Courses_Id PRIMARY KEY (Id)
+);
+
+CREATE TABLE [Enrollments] (
+    Id INT IDENTITY,
+    StudentId INT NOT NULL,
+    CourseId INT NOT NULL,
+    CONSTRAINT PK_Enrollments_Id PRIMARY KEY (StudentId, CourseId),
+    CONSTRAINT FK_Enrollments_StudentId FOREIGN KEY (StudentId) REFERENCES [Students] (Id)
+    CONSTRAINT FK_Enrollments_CourseId FOREIGN KEY (CourseId) REFERENCES [Courses] (Id)
 );
 
 -- Alter table to add new column.
-ALTER TABLE MyTable
-ADD Salary money NOT NULL;
+ALTER TABLE [Students]
+ADD Age int NOT NULL;
 
 -- Add constraint to the new column.
-ALTER TABLE Table
-ADD CONSTRAINT CHK_Salary
-CHECK (Salary > 0);
-
--- Delete all entries in table.
-TRUNCATE TABLE Table;
+ALTER TABLE [Students]
+ADD CONSTRAINT CHK_Age
+CHECK (Age > 0);
 
 -- Delete table.
-DROP TABLE Table;
+DROP TABLE [Students];
 
 -- Use master.
 USE master;
 GO
 
 -- Delete database.
-DROP DATABASE Database;
+DROP DATABASE [University];
 ```
 
 ## DML
@@ -165,63 +211,40 @@ operations on the data.
 **RESULT SET** The set of rows returned by query after it has been executed
 against the database.
 
-### STEPS IN DATABASE DESIGN
-
-01. **TABLES** Represent the objects we want to store in the database.
-
-02. **COLUMNS** Represent the data that define the object and we want to store.
-
-03. **PRIMARY KEYS** Constraints that meke each row unique.
-
-04. **RELATIONSHIPS** Constraints that specify how tables relate to each other.
-
-05. **CONSTRAINTS** Rules and restrictions on the data in a table.
-
-06. **SEED** Initial values used for auto-incrementing primary keys (not
-adding initial data to the database).
-
 ```sql
-CREATE TABLE Students (
-    Id INT IDENTITY,
-    FullName NVARCHAR(100) NOT NULL,
-    CONSTRAINT PK_Students_Id PRIMARY KEY (Id)
-);
-
-CREATE TABLE Courses (
-    Id INT IDENTITY,
-    CourseName NVARCHAR(100) NOT NULL,
-    CONSTRAINT PK_Courses_Id PRIMARY KEY (Id)
-);
-
-CREATE TABLE Enrollments (
-    Id INT IDENTITY,
-    StudentId INT NOT NULL,
-    CourseId INT NOT NULL,
-    CONSTRAINT PK_Enrollments_Id PRIMARY KEY (StudentId, CourseId),
-    CONSTRAINT FK_Enrollments_StudentId FOREIGN KEY (StudentId) REFERENCES Students (Id)
-    CONSTRAINT FK_Enrollments_CourseId FOREIGN KEY (CourseId) REFERENCES Courses (Id)
-);
-
-INSERT INTO Students
+INSERT INTO [Students]
 (FullName)
 VALUES
 ('Frank Lampard'),
 ('John Terry'),
 ('Didier Drogba');
 
-INSERT INTO Courses
+INSERT INTO [Courses]
 (CourseName)
 VALUES
 ('Defending 101'),
 ('Passing 101'),
 ('Scoring 101');
 
-INSERT INTO Enrollments
+INSERT INTO [Enrollments]
 (StudentId, CourseId)
 VALUES
 (1, 2),
 (2, 1),
 (3, 3);
+
+-- Get data.
+SELECT * FROM [Students];
+
+-- Update data.
+UPDATE [Students]
+SET FullName += ' updated'
+WHERE FullName = 'Frank Lampard';
+GO
+
+-- Delete all entries in a table.
+TRUNCATE TABLE [Students];
+GO
 ```
 
 ### QUERY EXECUTION ORDER
@@ -247,96 +270,87 @@ JOIN criteria.
 
 10. **TOP/LIMIT** Limits the the rows returned in a result set.
 
-## OPERATORS
+### OPERATORS
 
-`Comparison` >, <, >=, <=, =
+**COMPARISON** (>, <, >=, <=, =)
 
-`Logical` AND, OR, NOT
+**LOGICAL** (AND, OR, NOT)
 
-`Pattern matching` LIKE, IN, IS NULL, IS NOT NULL
+**PATTERN MATCHING** (LIKE, IN, IS NULL, IS NOT NULL)
 
-`Other` BETWEEN
+**OTHER** (BETWEEN)
 
-## FUNCTIONS
+### BUILT-IN FUNCTIONS
 
-`AGGREGATE` (SUM, AVG, COUNT, MIN, MAX)
+**AGGREGATE** (SUM, AVG, COUNT, MIN, MAX)
 
-`STRING` (LEN, UPPER, LOWER, SUBSTRING, REPLACE, LTRIM, RTRIM, CONCAT, REVERSE)
+**STRING** (LEN, UPPER, LOWER, SUBSTRING, REPLACE, LTRIM, RTRIM, CONCAT, REVERSE)
 
-`DATE AND TIME` (GETDATE, DATEADD, DATEDIFF, DATENAME, CONVERT, FORMAT)
+**DATE AND TIME** (GETDATE, DATEADD, DATEDIFF, DATENAME, CONVERT, FORMAT)
 
-`MATH` (ABS, CEILING, FLOOR, ROUND, POWER, SQRT)
+**MATH** (ABS, CEILING, FLOOR, ROUND, POWER, SQRT)
 
-`SYSTEM` (@@IDENTITY, @@ERROR, @@ROWCOUNT, @@SCOPE_IDENTITY)
+**SYSTEM** (@@IDENTITY, @@ERROR, @@ROWCOUNT, @@SCOPE_IDENTITY)
 
-`CONVERSION` (CAST, CONVERT)
+**CONVERSION** (CAST, CONVERT)
 
-`LOGICAL` (ISNULL, COALESCE)
+**LOGICAL** (ISNULL, COALESCE)
 
-`RANKING` (ROW_NUMBER, RANK, DENSE_RANK, NTILE)
+**RANKING** (ROW_NUMBER, RANK, DENSE_RANK, NTILE)
 
-`OTHER` (OFFSET, FETCH)
+**OTHER** (OFFSET, FETCH)
 
-### Notes
+### RANKING
 
-Most of the functions (if not all of them) use 1 as start index.
+A ranking function is a function that assigns a number/rank to each row within a
+partition of a result set.
 
-## WILDCARDS
+**OVER** Used with ranking functions to define the set of rows on which the
+function operates.
+
+**ORDER BY** It is mandatory after OVER because ranking functions require
+specific order.
+
+**PARTITION BY** Optional clause to devide the result set into partitions.
+
+```sql
+SELECT
+    FullName,
+    JobTitle,
+    ROW_NUMBER() OVER (PARTITION BY JobTitle ORDER BY JobTitle) AS Rank
+FROM Employees;
+```
+
+### WILDCARDS
 
 SQL Server wildcards are special characters used in the LIKE operator's pattern
 matching.
 
-`%` Zero, one, or more characters ('Jo%' matches John, Joe, Joanna).
+**%** Zero, one, or more characters ('Jo%' matches John, Joe, Joanna).
 
-`_` Single character ('J_n' matches Jan, Jen, Jon).
+**_** Single character ('J_n' matches Jan, Jen, Jon).
 
-`[...]` Set or range of characters ([Jj] matches John, john).
+**[...]** Set or range of characters ([Jj] matches John, john).
 
-`[^...]` Any character not in set or range.
+**[^...]** Any character not in set or range.
 
-`[a-c]` Any character in range ([a-c] matches a, b, c).
+**[a-c]** Any character in range ([a-c] matches a, b, c).
 
-
-## TABLE RELATIONS
-
-`One-to-many` - e.g. one country has many towns, one town has one country.
-
-`Many-to-many` - e.g. one student has many courses, one course has many
-students. Uses `join/mapping table` which references both primary keys.
-
-`One-to-one` - e.g. one country has one capital. 
-
-```sql
-CONSTRAINT FK_Country_Capital FOREIGN KEY (CapitalID) REFERENCES Cities(Id);
-```
-
-## JOIN
+### JOIN
 
 With `JOIN` statement we can get data from two tables simultaneously.
 
-`INNER JOIN` - Takes all rows that are not null in both tables.
+**INNER JOIN** Takes all rows that are not null in both tables.
 
-`LEFT OUTER JOIN` - Take all rows from LEFT, and fill nulls to RIGHT.
+**LEFT OUTER JOIN** Take all rows from LEFT, and fill nulls to RIGHT.
 
-`RIGHT OUTER JOIN` - Take all rows from RIGHT, and fill nulls to LEFT.
+**RIGHT OUTER JOIN** Take all rows from RIGHT, and fill nulls to LEFT.
 
-`FULL OUTER JOIN`
+**FULL OUTER JOIN**
 
-`CROSS JOIN`
+**CROSS JOIN**
 
-### Notes
-
-`Cartesian product` - All possible combinations between the elemets of two sets.
-This is the result when data from multiple tables are taken without a valid
-JOIN.
-
-## CTE
-
-Common table expression is a query which result can be used as source for
-another query. It can be considered as a named subquery. To write CTE we begin
-with `WITH` then `CTE_Name` followed by `AS ()` which contains the subquery.
-
-# Programmability
+## PROGRAMMABILITY
 
 This section refers on how to customize database behavior.
 
@@ -345,7 +359,99 @@ This section refers on how to customize database behavior.
 - `Procedures` Series of operations, including querying and modifying the db.
 - `Triggers` Watch for activity in the database and react to it.
 
-# TRANSACTIONS
+### CTE
+
+Common Table Expression is a named temporary result set that can be referenced
+within the scope of a single SELECT, INSERT, UPDATE or DELETE statement. CTEs
+enhance readability and simplify complex queries by breaking them down to
+smaller, more manageable parts.
+
+```sql
+WITH CTE_AvgDepartmentSalary (DepartmentId, AvgSalary)
+AS
+(
+    SELECT DepartmentId, AVG(Salary) AS AvgSalary
+    FROM [Employees]
+    GROUP BY DepartmentId;
+)
+SELECT
+    DepartmentId,
+    MIN(AvgSalary) AS MinAvgSalary
+FROM CTE_AvgDepartmentSalary;
+
+WITH CTE_LowSalaryEmployees (EmployeeId)
+AS
+(
+    SELECT EmployeeId
+    FROM [Employees]
+    WHERE DepartmentId = 1 AND Salary < 50000;
+)
+DELETE FROM [Employeees]
+WHERE EmployeeId IN (SELECT EmployeeId FROM CTE_LowSalaryEmployees);
+```
+
+### FUNCTIONS
+
+Functions encapsulate logic to perform specific task. Usually they recieve
+input (parameters) and return output. Scalar Functions return scalar value and
+Table-Valued Functions return result set.
+
+```sql
+CREATE FUNCTION fn_GetAge
+(
+    @dob date
+)
+RETURNS int
+AS
+BEGIN
+    RETURN DATEDIFF(YEAR, @dob, GETDATE());
+END
+```
+
+### STORED PROCEDURES
+
+Precompiled, reusable SQL. Can include data retrieval and modification.
+
+```sql
+CREATE PROCEDURE usp_UpdateEmployeeSalary
+(
+    @EmployeeId int,
+    @NewSalary decimal(10,2)
+)
+AS
+BEGIN
+    UPDATE Employees
+    SET Salary = @NewSalary
+    WHERE Id = @EmployeeId;
+END
+```
+
+### TRIGGERS
+
+Triggers are special types of stored procedures that automatically execute
+in response to certain events (INSERT, UPDATE, DELETE, CREATE, ALTER, DROP) on a
+table or view. The data after performing the operation is not saved before the
+trigger executes.
+
+**AFTER TRIGGER** Executed after INSERT, UPDATE, DELETE. Can access updated or
+deleted rows.
+
+**INSTEAD OF TRIGGER** Executed instead of the triggering operation, which
+allows overriding the default behavior of INSERT, UPDATE, DELETE.
+
+```sql
+CREATE TRIGGER tr_TriggerName
+ON TableName
+AFTER UPDATE
+AS
+BEGIN
+    SELECT *
+    FROM inserted i
+    JOIN deleted d ON d.Id = i.Id;
+END
+```
+
+### TRANSACTIONS
 
 Transactions are a set of database operations executed as a whole. If one
 operation fail, the whole transaction is cancelled and a `ROLLBACK` is made
@@ -372,36 +478,8 @@ BEGIN CATCH
 END CATCH
 ```
 
-## TRIGGERS
+## Notes
 
-Triggers are special types of stored procedures that automatically execute
-in response to certain events on a table or view. The data after performing
-the operation is not saved before the trigger executes.
-
-`DML` - Data Manipulation Language is INSERT, UPDATE, DELETE. DML events are
-triggered when manipulating the data in the database.
-
-`DDL` - Data Definition Language is CREATE, ALTER, DROP. DDL events are
-triggered after making changes to the structure of the database or its objects.
-that are triggered after one of these statements.
-
-`Logon` - Refers to the process of authentication and establishing connection
-with the database.
-
-`AFTER TRIGGER` - Executed after INSERT, UPDATE, DELETE. Can access updated or
-deleted rows.
-
-`INSTEAD OF TRIGGER` - Executed instead of the triggering operation, which
-allows overriding the default behavior of INSERT, UPDATE, DELETE.
-
-```sql
-CREATE TRIGGER tr_TriggerName
-ON TableName
-AFTER UPDATE
-AS
-BEGIN
-    SELECT *
-    FROM inserted i
-    JOIN deleted d ON d.Id = i.Id;
-END
-```
+**Cartesian product** All possible combinations between the elemets of two sets.
+This is the result when data from multiple tables are taken without a valid
+JOIN.
