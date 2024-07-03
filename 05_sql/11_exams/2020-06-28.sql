@@ -215,3 +215,100 @@ ORDER BY JourneysCount DESC, p.Name;
 -- =============================================================================
 -- Problem 10: SELECT SECOND OLDEST IMPORTANT COLONIST
 -- =============================================================================
+
+PRINT('SELECTING COLONISTS PARTITIONED BY JOB AND RANKED BY AGE')
+
+WITH CTE_RankedColonists (JobDuringJourney, FullName, JobRank)
+AS
+(
+    SELECT
+        JobDuringJourney,
+        CONCAT(FirstName, ' ', LastName) AS FullName,
+        ROW_NUMBER() OVER (PARTITION BY JobDuringJourney ORDER BY BirthDate) AS JobRank
+    FROM Colonists c
+    JOIN TravelCards tc
+    ON c.Id = tc.ColonistId
+)
+SELECT
+    JobDuringJourney,
+    FullName,
+    JobRank
+FROM CTE_RankedColonists
+WHERE JobRank = 2;
+
+
+-- =============================================================================
+-- PROGRAMMABILITY PROGRAMMABILITY PROGRAMMABILITY PROGRAMMABILITY PROGRAMMABILI
+-- =============================================================================
+
+-- =============================================================================
+-- Problem 11: GET COLONISTS COUNT
+-- =============================================================================
+
+PRINT('CREATING FUNCTION udf_GetColonistsCount'); 
+
+GO
+
+CREATE FUNCTION udf_GetColonistsCount
+(
+    @PlanetName varchar(30)
+)
+RETURNS int
+AS
+BEGIN
+    DECLARE @count int;
+
+    SELECT @count = COUNT(*)
+    FROM Colonists c
+    JOIN TravelCards tc
+    ON c.Id = tc.ColonistId
+    JOIN Journeys j
+    ON j.Id = tc.JourneyId
+    JOIN Spaceports sp
+    ON sp.Id = j.DestinationSpaceportId
+    JOIN Planets p
+    ON p.Id = sp.PlanetId
+    WHERE p.Name = @PlanetName;
+
+    RETURN @count;
+END
+
+GO
+
+SELECT 
+    [Name] AS PlanetName,
+    dbo.udf_GetColonistsCount([Name]) AS ColonisedCount
+FROM Planets
+ORDER BY ColonisedCount DESC;
+
+-- =============================================================================
+-- Problem 12: CHANGE JOURNEY PURPOSE
+-- =============================================================================
+
+PRINT('CREATING STORED PROCEDURE usp_ChangeJourneyPurpose');
+
+GO
+
+CREATE PROCEDURE usp_ChangeJourneyPurpose
+(
+    @JourneyId int,
+    @NewPurpose varchar(11)
+)
+AS
+BEGIN
+    IF NOT EXISTS (SELECT 1 FROM Journeys WHERE Id = @JourneyId)
+    BEGIN
+        RAISERROR('The journey does not exist!', 10, 10);
+        RETURN;
+    END
+
+    IF EXISTS (SELECT 1 FROM Journeys WHERE Id = @JourneyId AND Purpose = @NewPurpose)
+    BEGIN
+        RAISERROR('You cannot change the purpose!', 10, 10);
+        RETURN;
+    END
+
+    UPDATE Journeys
+    SET Purpose = @NewPurpose
+    WHERE Id = @JourneyId;
+END
