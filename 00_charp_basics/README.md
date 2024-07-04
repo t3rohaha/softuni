@@ -1,90 +1,125 @@
-# Programming Basics
+# PROGRAMMING BASICS
 
-The course "Programming Basics" provides introductory skills in programming
-necessary for all technological disciplines at the Software University.
+## CONTENT
 
-## Foundation of Computer Programming
+1. [First Steps](#first-steps)
+2. [Simple Calculations](#simple-calculations)
+    1. [Variables](#variables)
+    2. [Operators and Expressions](#operators-and-expressions)
+    3. [Variable Lifetime and Scope](#variable-lifetime-and-scope)
+3. [Conditional Statements](#conditional-statements)
+4. [Loops](#loops)
 
-- `Programming`Is writing commands which will be executed by a computer.
+## FIRST STEPS
 
-- `Program` Is a sequence of commands which serve the requirements of the
-program.
+**PROGRAMMING** Writing commands which will be executed by computer.
 
-- `Source code` Is the human readable representation of a program.
+**PROGRAM** Sequence of commands which serve general purpose.
 
-- `Compilation` Is the process of translating the source code to binary code,
-so the computer hardware understands it.
+**SOURCE CODE** Human readable representation of a program.
 
-- `Console Application` Is a computer program that interacts with the user
-through a text based interface known as console.
+**COMPILATION** Translating the source code to binary code, so the computer
+hardware understands it.
 
-- `Web Application` Is a computer program that interacts with the user through
-a web browser over the internet.
+**CONSOLE APPLICATION** Computer program that interacts with the user through a
+text based interface known as console.
 
-## Variables and Data
+**WEB APPLICATION** Computer program that interacts with the user through a web
+browser over the internet.
 
-- `Computer` Is a machine which process data.
+**IDE** Integrated Development Environment is software application which
+provides centralized environment for sofware development. It facilitates
+project management (crud files), package management, compilation, running and
+debugging.
 
-- `Variable` Is a container for storing data.
+**DEBUGGER** A tool that allow developers to inspect their code while executing.
 
-- `Declaration` Is the process of introducting a variable to the compiler.
+## SIMPLE CALCULATIONS
 
-- `Initialization` Is the process of giving initial value to a variable.
+### VARIABLES
 
-## Operators and Expressions
+**VARIABLE** Named storage location in memory which holds value. Variables have
+type, name and value.
 
-- `Operator` Is a symbol which allows performing operations on variables and
-values.
+**DECLARATION** Introducing (giving name and type) variable to the compiler.
 
-- `Expression` Is a combination of operators, variables and values that result
-in a value.
+**INITIALIZATION** Giving initial value to variable.
 
-- `Arithmetic Operators` +, -, *, /, %, ^.
+**TYPE** Variables can hold different types like text, character, number, date,
+picture, list etc.
 
-- `Comparison Operators` ==, !=, >, >=, <, <=.
+### OPERATORS AND EXPRESSIONS
 
-- `Logical Operators` !, &&, ||.
+**OPERATOR** Symbol that performs operation on variables and values.
 
-- `Ternary Operator` An operator which involves three operands. Examples for
+**ARITHMETIC OPERATORS** (+ - * / % ^)
+
+**COMPARISON OPERATORS** (== != > >= < <=)
+
+**LOGICAL OPERATORS** (! && ||)
+
+**TERNARY OPERATORS** An operator which involves three operands. Examples for
 ternary operators are `number % 2 == 0` and `condition ? true : false`.
 
-## Conditional Statements
+**EXPRESSION** Combination of operators, variables and values that result in a
+value.
 
-- `if` Executes code if a given condition is true.
+### VARIABLE LIFETIME AND SCOPE
 
-- `else-if` Executes code if a given condition is true and all
-preceeding statements are false.
+**VARIABLE LIFETIME** Period during which a variable exists.
 
-- `else` Executes a code if all preceeding statemets are false.
+**VARIABLE SCOPE** Part of the code where a variable can be accessed.
 
-- `switch` Executes code based on a given value.
+## CONDITIONAL STATEMENTS
 
-## Variable Lifetime and Scope
+**IF** Executes code if a given condition is true.
 
-- `Variable lifetime` Is a period during which a variable exists.
+**ELSE-IF** Executes code if a given condition is true and all preceeding
+statements are false.
 
-- `Variable scope` Is a part of the code where a variable can be accessed.
+**ELSE** Executes a code if all preceeding statemets are false.
 
-## Integrated Development Environment
+**SWITCH** Executes code based on a given value.
 
-- `IDE` Software application which provides centralized environment for sofware
-development.
+```csharp
+int number = 7;
 
-- `Debugger` A tool that allow developers to inspect their code while
-executing.
+if (number > 10)
+{
+    Console.WriteLine("The number is greater than 10.");
+}
+else if (number > 5)
+{
+    Console.WriteLine("The number is greater than 5.");
+}
+else
+{
+    Console.WriteLine("The number is 5 or less.");
+}
+```
 
-- `Build Automation` Automating the process of building and running the
-application.
+```csharp
+int dayOfWeek = 1;
 
-- `Project Management` Facilitates orginizing and managing project files, such
-as creating, opening and saving projects.
+switch (dayOfWeek)
+{
+    case 1: Console.WriteLine("Monday"); break;
+    case 2: Console.WriteLine("Tuesday"); break;
+    case 3: Console.WriteLine("Wednesday"); break;
+    case 4: Console.WriteLine("Thursday"); break;
+    case 5: Console.WriteLine("Friday"); break;
+    case 6: Console.WriteLine("Saturday"); break;
+    case 7: Console.WriteLine("Sunday"); break;
+    default: Console.WriteLine("Invalid day"); break;
+}
+```
 
-## Control Statements
+## LOOPS
 
-- `for loop` Control statement that executes a block of code for a given number
-of times.
+**FOR** Control statement that executes a block of code for a given number of
+times.
 
-- `while loop` Control statement that executes a block of repeatedly until a
-given condition is true.
+**WHILE** Control statement that executes a block of repeatedly until a given
+condition is true.
 
-- `do-while loop` Similar to while loop but always executes atleast once.
+**DO-WHILE** Similar to while loop but always executes atleast once.
