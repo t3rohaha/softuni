@@ -1,8 +1,8 @@
-namespace TennisRanklist;
+namespace Exam01;
 
-class Program
+public class TennisRanklist
 {
-    static void Main()
+    public static void Main()
     {
         var totalTournaments = int.Parse(Console.ReadLine()!);
         var initialPoints = int.Parse(Console.ReadLine()!);

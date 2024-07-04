@@ -1,8 +1,8 @@
-namespace Skeleton;
+namespace Exam01;
 
-class Program
+public class Skeleton
 {
-    static void Main()
+    public static void Main()
     {
         var m = int.Parse(Console.ReadLine()!);     // Minutes of the time to beat
         var s = int.Parse(Console.ReadLine()!);     // Seconds of the time to beat

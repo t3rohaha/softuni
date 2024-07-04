@@ -1,8 +1,8 @@
-namespace TennisEquipment;
+namespace Exam01;
 
-class Program
+public class TennisEquipment
 {
-    static void Main()
+    public static void Main()
     {
         var racketPrice = decimal.Parse(Console.ReadLine()!);
         var racketsCount = int.Parse(Console.ReadLine()!);

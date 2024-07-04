@@ -1,8 +1,8 @@
-namespace Gymnastics;
+namespace Exam01;
 
-class Program
+public class Gymnastics
 {
-    static void Main()
+    public static void Main()
     {
         var country = Console.ReadLine()!;
         var equipment = Console.ReadLine()!;

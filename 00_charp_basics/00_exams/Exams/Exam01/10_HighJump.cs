@@ -1,8 +1,8 @@
-namespace HighJump;
+namespace Exam01;
 
-class Program
+public class HighJump
 {
-    static void Main()
+    public static void Main()
     {
         ushort finalTargetHeight = ushort.Parse(Console.ReadLine()!);
         ushort targetHeight = (ushort)(finalTargetHeight - 30);

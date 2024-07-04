@@ -1,8 +1,8 @@
-namespace FootballResults;
+namespace Exam01;
 
-class Program
+public class FootballResults
 {
-    static void Main()
+    public static void Main()
     {
         int wins = 0, loses = 0, draws = 0;
 

@@ -1,8 +1,8 @@
-namespace FitnessCenter;
+namespace Exam01;
 
-class Program
+public class FitnessCenter
 {
-    static void Main()
+    public static void Main()
     {
         var visitorsCount = ushort.Parse(Console.ReadLine()!);
         var backTrainersCount = 0f;

@@ -1,8 +1,8 @@
-namespace Darts;
+namespace Exam01;
 
-class Program
+public class Darts
 {
-    static void Main()
+    public static void Main()
     {
         var playerName = Console.ReadLine()!;
         var totalPoints = 301;

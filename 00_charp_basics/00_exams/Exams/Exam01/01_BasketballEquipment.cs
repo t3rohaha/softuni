@@ -1,8 +1,8 @@
-namespace BasketballEquipment;
+namespace Exam01;
 
-class Program
+public class BasketballEquipment
 {
-    static void Main()
+    public static void Main()
     {
         var fee = decimal.Parse(Console.ReadLine()!); // Basketball practice annual fee
 

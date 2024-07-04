@@ -1,8 +1,8 @@
-namespace WorldSnookerChampionship;
+namespace Exam01;
 
-class Program
+public class WorldSnookerChampionship
 {
-    static void Main()
+    public static void Main()
     {
         var ticketStage = Console.ReadLine()!;
         var ticketType = Console.ReadLine()!;
