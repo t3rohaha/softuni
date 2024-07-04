@@ -2,13 +2,12 @@
 
 ## CONTENT
 
-1. [First Steps](#first-steps)
-2. [Simple Calculations](#simple-calculations)
-    1. [Variables](#variables)
-    2. [Operators and Expressions](#operators-and-expressions)
-    3. [Variable Lifetime and Scope](#variable-lifetime-and-scope)
-3. [Conditional Statements](#conditional-statements)
-4. [Loops](#loops)
+01. [First Steps](#first-steps)
+02. [Variables](#variables)
+03. [Operators and Expressions](#operators-and-expressions)
+04. [Conditional Statements](#conditional-statements)
+05. [Variable Lifetime and Scope](#variable-lifetime-and-scope)
+06. [Loops](#loops)
 
 ## FIRST STEPS
 
@@ -34,9 +33,7 @@ debugging.
 
 **DEBUGGER** A tool that allow developers to inspect their code while executing.
 
-## SIMPLE CALCULATIONS
-
-### VARIABLES
+## VARIABLES
 
 **VARIABLE** Named storage location in memory which holds value. Variables have
 type, name and value.
@@ -48,7 +45,7 @@ type, name and value.
 **TYPE** Variables can hold different types like text, character, number, date,
 picture, list etc.
 
-### OPERATORS AND EXPRESSIONS
+## OPERATORS AND EXPRESSIONS
 
 **OPERATOR** Symbol that performs operation on variables and values.
 
@@ -63,12 +60,6 @@ ternary operators are `number % 2 == 0` and `condition ? true : false`.
 
 **EXPRESSION** Combination of operators, variables and values that result in a
 value.
-
-### VARIABLE LIFETIME AND SCOPE
-
-**VARIABLE LIFETIME** Period during which a variable exists.
-
-**VARIABLE SCOPE** Part of the code where a variable can be accessed.
 
 ## CONDITIONAL STATEMENTS
 
@@ -113,6 +104,12 @@ switch (dayOfWeek)
     default: Console.WriteLine("Invalid day"); break;
 }
 ```
+
+## VARIABLE LIFETIME AND SCOPE
+
+**VARIABLE LIFETIME** Period during which a variable exists.
+
+**VARIABLE SCOPE** Part of the code where a variable can be accessed.
 
 ## LOOPS
 
