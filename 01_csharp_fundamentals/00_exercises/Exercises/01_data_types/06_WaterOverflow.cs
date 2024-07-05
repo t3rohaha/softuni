@@ -1,8 +1,8 @@
-namespace WaterOverflow;
+namespace DataTypes;
 
-class Program
+public class WaterOverflow
 {
-    static void Main()
+    public static void Main()
     {
         var inputCount = byte.Parse(Console.ReadLine()!);
 

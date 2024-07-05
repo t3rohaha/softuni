@@ -1,8 +1,8 @@
-namespace SpiceMustFlow;
+namespace DataTypes;
 
-class Program
+public class SpiceMustFlow
 {
-    static void Main()
+    public static void Main()
     {
         var startingYield = int.Parse(Console.ReadLine()!);
 

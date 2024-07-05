@@ -1,6 +1,6 @@
-namespace SumOfChars;
+namespace DataTypes;
 
-class Program
+public class SumOfChars
 {
     static void Main()
     {

@@ -1,8 +1,8 @@
-namespace Phonebook;
+namespace DictionariesLambdaLINQ;
 
-class Program
+public class Phonebook
 {
-    static void Main()
+    public static void Main()
     {
         var phonebook = new SortedDictionary<string, string>();
 

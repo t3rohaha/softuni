@@ -1,8 +1,8 @@
-namespace Elevator;
+namespace DataTypes;
 
-class Program
+public class Elevator
 {
-    static void Main()
+    public static void Main()
     {
         var peopleCount = double.Parse(Console.ReadLine()!);
         var elevatorCapacity = double.Parse(Console.ReadLine()!);

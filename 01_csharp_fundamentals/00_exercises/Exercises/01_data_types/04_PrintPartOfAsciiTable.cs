@@ -1,8 +1,8 @@
-namespace PrintPartOfAsciiTable;
+namespace DataTypes;
 
-class Program
+public class PrintPartOfAsciiTable
 {
-    static void Main()
+    public static void Main()
     {
         var start = byte.Parse(Console.ReadLine()!);
         var end = byte.Parse(Console.ReadLine()!);

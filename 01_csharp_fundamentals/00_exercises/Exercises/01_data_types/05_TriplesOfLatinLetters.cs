@@ -1,8 +1,8 @@
-namespace TriplesOfLatinLetters;
+namespace DataTypes;
 
-class Program
+public class TriplesOfLatinLetters
 {
-    static void Main()
+    public static void Main()
     {
         var n = byte.Parse(Console.ReadLine()!);
 

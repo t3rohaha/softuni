@@ -1,8 +1,8 @@
-namespace PopulationCounter;
+namespace DictionariesLambdaLINQ;
 
-class Program
+public class PopulationCounter
 {
-    static void Main()
+    public static void Main()
     {
         var population = new List<CityInfo>();
 

@@ -1,9 +1,9 @@
-namespace DestinationMapper;
+namespace Exam01;
 using System.Text.RegularExpressions;
 
-class Program
+public class DestinationMapper
 {
-    static void Main()
+    public static void Main()
     {
         string encryptedLocations = Console.ReadLine()!;
 

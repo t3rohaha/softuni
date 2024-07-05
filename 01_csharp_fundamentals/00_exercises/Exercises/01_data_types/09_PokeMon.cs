@@ -1,8 +1,8 @@
-namespace PokeMon;
+namespace DataTypes;
 
-class Program
+public class PokeMon
 {
-    static void Main()
+    public static void Main()
     {
         var initialPokePower = int.Parse(Console.ReadLine()!);  // N
         var pokeDistance = int.Parse(Console.ReadLine()!);      // M

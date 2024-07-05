@@ -1,9 +1,9 @@
-namespace Snowballs;
+namespace DataTypes;
 using System.Numerics;
 
-class Program
+public class Snowballs
 {
-    static void Main()
+    public static void Main()
     {
         var snowballsCount = byte.Parse(Console.ReadLine()!);
         BigInteger maxSnowballValue = 0;

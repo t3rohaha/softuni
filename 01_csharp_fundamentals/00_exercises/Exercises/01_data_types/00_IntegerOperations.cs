@@ -1,8 +1,8 @@
-namespace IntegerOperations;
+namespace DataTypes;
 
-class Program
+public class IntegerOperations
 {
-    static void Main()
+    public static void Main()
     {
         long number = long.Parse(Console.ReadLine()!);
         

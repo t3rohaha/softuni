@@ -1,8 +1,8 @@
-namespace BakeryShop;
+namespace Exam01;
 
-class Program
+public class BakeryShopProgram
 {
-    static void Main()
+    public static void Main()
     {
         var shop = new BakeryShop();
 

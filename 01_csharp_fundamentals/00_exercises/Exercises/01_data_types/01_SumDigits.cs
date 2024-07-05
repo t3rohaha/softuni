@@ -1,8 +1,8 @@
-namespace SumDigits;
+namespace DataTypes;
 
-class Program
+public class SumDigits
 {
-    static void Main()
+    public static void Main()
     {
         var num = Console.ReadLine()!;
 

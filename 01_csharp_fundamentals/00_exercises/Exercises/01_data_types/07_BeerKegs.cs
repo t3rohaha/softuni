@@ -1,6 +1,6 @@
-namespace BeerKegs;
+namespace DataTypes;
 
-class Program
+public class BeerKegs
 {
     static void Main()
     {

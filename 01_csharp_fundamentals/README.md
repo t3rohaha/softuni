@@ -1,4 +1,17 @@
-# Programming Fundamentals
+# PROGRAMMING FUNDAMENTALS
+
+## CONTENT
+
+01. [Version Control](#version-control)
+02. [Data Types](#data-types)
+03. [Methods and Debugging](#methods-and-debugging)
+04. [Arrays](#arrays)
+05. [Lists](#lists)
+06. [Dictionaries, Lambda and LINQ](#dictionaries,-lambda-and-linq)
+07. [Objects and Classes](#objects-and-classes)
+08. [Files and Directories](#files-and-directories)
+09. [Strings](#strings)
+10. [Regex](#regex)
 
 ## Error Handling
 
