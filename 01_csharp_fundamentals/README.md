@@ -81,13 +81,13 @@ have different precision.
 - `char` Represents a single symbol `var x = 'A';`
 - `string` Represents a sequence of characters `var x = "Hello!";`
 
-**IMPLICIT TYPE CONVERSION** When we convert a type with smaller value range to a type with
-larger value range (e.g float to double). Because we are converting to a type
-with bigger value range, no data can be lost.
+**IMPLICIT TYPE CONVERSION** When we convert a type with smaller value range to
+a type with larger value range (e.g float to double). Because we are converting
+to a type with bigger value range, no data can be lost.
 
-**EXPLICIT TYPE CONVERSION** When we convert from a type with bigger value range to a type with
-smaller value range. Because we are converting to a type with smaller value
-range, this can lead to exception or loosing precision.
+**EXPLICIT TYPE CONVERSION** When we convert from a type with bigger value range
+to a type with smaller value range. Because we are converting to a type with
+smaller value range, this can lead to exception or loosing precision.
 
 **STACK** Is part of the computer memory, which is used to store and access
 small information. It is faster than the Heap.
@@ -256,7 +256,7 @@ var ppl = new SortedDictionary<string, int>()   // Initialize
 Console.WriteLine(string.Join(", ", ppl.Keys)); // Ashley Cole, Frank ...
 ```
 
-## Objects and Classes
+## OBJECTS AND CLASSES
 
 **OBJECT** Instance of a class. Encapsulate data (fields) and behavior
 (methods).
@@ -315,25 +315,89 @@ public class Person
 }
 ```
 
-## Error Handling
+## STRINGS
 
-- `try-block` In this block, you place the code that you want to monitor for
-exceptions.
+**STRING** Text, sequence of characters.
 
-- `catch-block` In this block, you handle the exception that occured within the
-try block.
+**MUTABILITY** Whether variable value can be changed in memory after created.
+If data type is immutable, the value cannot be changed, insead a new value is
+saved and the reference of the variable is updated. If the data type is mutable
+the value is changed directly in memory.
 
-- `finally-block (optional)` This block is executed whether or not an exception
-occures. It's typically used for cleanup operations, such as closing files or
-releasing resources.
+**StringBuilder** A class which helps with the performance issues when
+manipulating large strings.
 
-## Text Processing
+```csharp
+var str = new string(new char[] {'s', 't', 'r'});   // char[] to string
+var chars = str.ToCharArray();                      // string to char[]
 
-- C# provides different ways to manipulate strings i.e. built in methods,
-`StringBuilder` class and `Regex` class.
+var str1 = "str1";
+var str2 = "str2";
+string.Compare(str1, str2, true);   // Compare strings (case-insensitive)
 
-`StringBuilder` String is `immutable` which can lead to performance issues
-when you need to concatenate multiple strings. `StringBuilder` provides a
-`mutable` buffer which allows efficient append, insert and remove operations.
+var builder = new StringBuilder(100);
+builder.Append("Hello Maria, how are you?");
+Console.WriteLine(builder); // Hello Maria, how are you?
+builder[6] = 'D';
+Console.WriteLine(builder); // Hello Daria, how are you?
+builder.Remove(5, 6);
+Console.WriteLine(builder); // Hello, how are you?
+builder.Insert(5, "Peter");
+Console.WriteLine(builder); // Hello Peter, how are you?
+builder.Replace("Peter", "George");
+Console.WriteLine(builder); // Hello George, how are you?
+```
 
-`Regex` a way to match text by pattern.
+## REGEX
+
+**REGEX** Advanced text processing tool.
+
+**PATTERN** Search criteria.
+
+**RANGES**
+- `[abc]` Matches any char that is either a, b or c.
+- `[^abc]` Matches any char that is not a, b or c.
+- `[0-9]` Matches any digit in range 0 - 9.
+
+**CLASSES**
+- `\w` Matches any word character (a-z, A-Z, 0-9, _).
+- `\W` Matches any non-word char (opposite of \w).
+- `\s` Matches any whitespace.
+- `\S` Matches any non-whitespace (opposite of \s).
+- `\d` Matches any digit (0-9).
+- `\D` Matches any non-digit.
+
+**QUANTIFIERS**
+- `*` Matches prev element 0 or more times.
+- `+` Matches prev element 1 or more times.
+- `?` Matches prev element - or 1 time.
+- `{3}` Matches prev element exactly 3 times.
+
+**SPECIAL**
+- `\n` New line.
+- `\r` Carriage return.
+- `\t` Tab.
+- `\0` Null.
+
+**ANCHORS**
+- `^` The match must occur at the beginning.
+- `$` The match must occur at the end.
+- `/m` Matches beginning and end of line, instead of beginning end of text.
+
+**GROUPING**
+- `(subexpr)` Matches everything enclosed and create a group.
+- `(?:subexpr)` Matches everything enclosed.
+- `(?<name>)` Matches everything enclosed and create named group.
+
+**BACKREFERENCES**
+- `\number` Matches the value of numbered group.
+
+```csharp
+var text = "Frank: 33, John: 33, Joe: 30";
+var pattern = @"([A-Z][a-z]+): (d+)";
+var regex = new Regex(pattern);
+
+bool isMatch = regex.IsMatch(text);             // True
+Match match = regex.Match(text);                // Single match
+MatchCollection matches = regex.Matches(text);  // All matches
+```
