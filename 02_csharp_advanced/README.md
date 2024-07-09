@@ -1,136 +1,193 @@
-# C# Advanced
+# C# ADVANCED
 
-## Stacks and Queues
+## CONTENT
+01. [Stacks and Queues](#stacks-and-queues)
+02. [Multidimensional Arrays](#multidimensional-arrays)
+03. [Data Transfer](#streams)
+04. [Functional Programming](#functional-programming)
+05. [More](#more)
+    01. [Collections vs Data Structures](#collections-vs-data-structures)
+    02. [Set](#set)
+    03. [Linked List](#linked-list)
 
-`Stack` is a `LIFO` collection. For working with stacks we can use `Stack<T>`,
-which is a generic class that inherits `IEnumerable<T>`.
+## STACKS AND QUEUES
 
-`Queue` is a `FIFO` collection. For working with queues we can use `Queue<T>`,
-which is a generic class that inherits `IEnumerable<T>`.
+**STACK** Data structure that follows the LIFO principle. This means that the
+last element added to the stack is the first one to be removed. Provide the
+following functionality (1. Pushing element to the top of the stack, 2. Popping
+elements from the top of the stack, 3. Getting the topmost element without
+removing it).
 
-## Multidimensional Arrays
+**QUEUE** Data structure that follows the FIFO principle. This means that the
+first element added to the queue is the first one to be removed. Provide the
+following functionality (1. Adding element to the end of the queue, 2. Removing
+the first element of the queue, 3. Getting the first element of the queue
+without removing it).
 
-`Multidimentional Array` an array of arrays with fixed length.
+## MULTIDIMENSIONAL ARRAY
 
-`2D Array` Is a multidimentional array that can be accessed by two indeces
-(rows and columns).
+**MULTIDIMENSIONAL ARRAY** Data structure that organizes data into multiple
+dimensions. Unlike one-dimensional array, which stores elements in a linear
+sequence, multidimensional arrays use multiple indeces to access its elements.
 
-`3D Array` Is a multidimentional array that can be accessed by three indeces
-(layer, rows and columns).
+**2D ARRAY** Is a multidimentional array that can be accessed by two indeces. It
+can be visualized as a table where indices represent `row` and `column`.
 
-`Matrix` is 2D array where the rows and columns have the same length.
+**3D ARRAY** Is a multidimentional array that can be accessed by three indeces.
+It can be visualized as a cube where each element can be accessed by coordinates
+(width, height, depth).
 
-`Jagged Array` An array of arrays which can be with different size.
+**JAGGED ARRAY** Array of arrays, where each array can have different size.
 
-### Notes
+**NOTES**
 
-If you want to have access to the dimensions of an array you should use `T[,]`
+- If you want to have access to the dimensions of an array you should use `T[,]`
 syntax. If you want to use jagged array syntax you should use `T[][]` syntax.
 
-## Sets
+```csharp
+var firstArray2D = new int[2, 3];               // Declare
+var firstArray3D = new int[2, 3, 4];            // Declare
 
-Collection that contains unique elements. C# provides `HashSet<T>`, which
-implements the matematical set concept and provides methods for operations
-like `union`, `intersection` and `difference`.
+int[,] secondArray2D =                          // Initialize
+{
+    { 1, 2, 3 },
+    { 1, 2, 3 },
+};
 
-`Union` All unique elements between two sets.
+int[,,] secondArray3D =                         // Initialize
+{
+    {
+        { 1, 2, 3, 4 },
+        { 1, 2, 3, 4 },
+        { 1, 2, 3, 4 }
+    },
+    {
+        { 1, 2, 3, 4 },
+        { 1, 2, 3, 4 },
+        { 1, 2, 3, 4 }
+    },
+};
 
-`Intersection` Elements that present between two sets.
+Console.WriteLine(secondArray2D[1, 2]);         // Access 2D last: 3
+Console.WriteLine(secondArray3D[1, 2, 3]);      // Access 3D last: 4
 
-`Difference` Elements that present in a set and don't present in compared set.
+Console.WriteLine(secondArray3D.Length);        // All elements: 24
+Console.WriteLine(secondArray3D.Rank);          // Number of dimensions: 3
+Console.WriteLine(secondArray3D.GetLength(0));  // Length of d1: 2
+Console.WriteLine(secondArray3D.GetLength(1));  // Length of d2: 3
+Console.WriteLine(secondArray3D.GetLength(2));  // Length of d3: 4
+```
 
-## Linked Lists
+```csharp
+var jaggedArray1 = new int[2][];        // Declare
+jaggedArray1[0] = [1, 2, 3];         
+jaggedArray1[1] = [1, 2, 3, 4];
 
-`Data structure` where elements are stored in objects called `nodes`. Each
-node has two parts: data and reference to next node. C# provides the
-`LinkedList<T>` which is a `doubly liked list`.
+int[][] jaggedArray2 =                  // Initialize
+{
+    [1, 2, 3],
+    [1, 2, 3, 4]
+};
 
-`Singly liked list` each node contains data and reference to the next node.
-The last node points to null.
+Console.WriteLine(jaggedArray2[0][0]);  // 1
+Console.WriteLine(jaggedArray2[1][1]);  // 2
+```
 
-`Doubly linked list` each node contains data, reference to next and previous
-node. This allows traversial of the list both forward and backward.
+## DATA TRANSFER
 
-`Circular liked list` each node contains data, reference to next and
-previous node. The last node points to first node forming a circle.
+**STREAM** Abstraction that represents the transfer of data. Streams are opened
+when the transfer begins and closed after it ends. Data is not transferred all
+at once but by chunks (buffers), for efficiency.
 
-## Stream I/O
+**INPUT STREAM** Used to read data.
 
-Refer to transfer of data either from or to storage. .NET offers different
-classes that inherit `Stream` class and facilitate working with different
-types of streams. I.E. `FileStream` class is used to perform common operations
-involving files. 
+**OUTPUT STREAM** Used to write data.
 
-`Stream` A collection of bytes which is used to read/write from/to different
-types of storage.
+**DECORATOR STREAM** Stream that add additional functionality to existing
+streams without modifying their core behavior.
 
-`Readers and Writers` Streams work with bytes, so when reading text from
-text file for example, conversion from string to bytes is needed. .NET provide
-classes for this task.
+**FILE STREAM** Decorator stream which facilitates working with files.
 
-`Asynchronous I/O` Reading and writing large amount of data take a lot of
-time and if we want the application to stay responsive, we can use asynchronous
-code.
+**MEMORY STREAM** Decorator stream which facilitates working with memory.
 
-`Compression` Refers to reducing the size of a file for storage.
+**NETWORK STREAM** Decorator stream which facilitates transfers over the
+network.
 
-`Decompression` refers to extracting te contents of a file in usable format.
+**READ** Extract data from stream.
 
-### Notes
+**WRITE** Send data to stream.
 
-Streams are opened before using them and closed after that.
+**SEEK** Move the position within a stream.
 
-## Functional Programming
+**FLUSH** Clear buffer and ensure data is sent to destination.
 
-Programming style that uses functions as its main building block. The function
-is `first class` citizen, which means it can be passed as arguments to function,
-be returned from function and be set to variable.
+**READERS AND WRITERS** Stream adapters (or readers and writers) facilitate
+type conversion when working with different types of streams (e.g. stream of
+bytes to text stream).
 
-`Pure functions` Functions that have no side affects and always return the same
+## FUNCTIONAL PROGRAMMING
+
+**FUNCTIONAL PROGRAMMING** Programming style that uses functions as its main
+building block (e.g. instead of objects). The function is `first class` citizen,
+which means it can be passed as arguments to function, be returned from function
+and be set to variable.
+
+**PURE FUNCTIONS** Functions that have no side affects and always return the same
 value for the same input, without modifying external data.
 
-`Delegates` A type that represents reference to methods. Enable you to treat
+**DELEGATES** A type that represents reference to methods. Enable you to treat
 methods as objects.
 
-`Func<T, TResult>` Predefined delegate which always return value.
+**Func<T, TResult>** Predefined delegate which always return value.
 
-`Action<T>` Predefined delegate that doesn't return value.
+**Action<T>** Predefined delegate that doesn't return value.
 
-## LINQ
+**LINQ** (Language-Integrated Query) is a feature that facilitates working with
+data from different data sources by providing common syntax for data
+manipulation. LINQ query can be written using either `query syntax` or
+`method syntax`.
 
-LINQ (Language-Integrated Query) is a feature that facilitates working with data
-from different data sources. LINQ query can be written using either
-`query syntax` or `method syntax`.
+**LINQ DATA SOURCE** Any object that supports the generic `IEnumerable<T>`, or
+an interface that inherits from it, typically `IQueryable<T>`.
 
-### Notes
+**LINQ QUERY EXECUTION** A query is executed with foreach or by caching the
+result and calling ToList() or ToArray() methods.
 
-A LINQ `data source` is any object that supports the generic `IEnumerable<T>`,
-or an interface that inherits from it, typically `IQueryable<T>`.
+**LAMBDA EXPRESSIN** Syntax for creating anonymous functions, which facilitates
+functional programming techniques in C#.
 
-A `query` is executed with `foreach`. To force query execution and cache the
-result you can call `ToList()` or `ToArray()` methods.
+## MORE
 
-## Generics
+### COLLECTIONS VS DATA STRUCTURES
 
-C# feature which enables `interfaces`, `classes`, `methods` and `delegates` to
-be defined with the types of data they will work with.
+**COLLECTION** A group of data.
 
-## Iterators
+**DATA STRUCTURE** A way of storing, accessing and managing data in memory.
 
-C# feature which allows creating classes that can be enumerated.
+### SET
 
-`IEnumerable` base interface for creating classes that can be enumerated.
+**SET** Collection that contains unique elements. C# provides `HashSet<T>`,
+which implements the matematical set concept and provides methods for operations
+like `union`, `intersection` and `difference`.
 
-`Iterator method` a method that returns `IEnumerable` and contains one or
-more `yield` statements.
+**UNION** Get all unique elements between two sets.
 
-`yield` is a keyword used inside `yield methods`. It returns a value and
-suspends method execution until `foreach` asks for another value.
+**INTERSECTION** Get elements that present between two sets.
 
-## Notes
+**DIFFERENCE** Get elements that present in a set and don't present in compared
+set.
 
-### Collections vs Data Structures
+### LINKED LIST
 
-`Collection` A group of data.
+**LINKED LIST** Data structure where elements are stored in objects called
+`nodes`. Each node has two parts: data and reference to next node. C# provides
+the `LinkedList<T>` which is a `doubly liked list`.
 
-`Data Structure` A way of storing, accessing and manipulating data in memory.
+**SINGLY LINKED LIST** each node contains data and reference to the next node. The
+last node points to null.
+
+**DOUBLY LINKED LIST** each node contains data, reference to next and previous
+node. This allows traversial of the list both forward and backward.
+
+**CIRCULAR LINKED LIST** each node contains data, reference to next and previous
+node. The last node points to first node forming a circle.
