@@ -1,4 +1,4 @@
-namespace Exam01;
+namespace Exams;
 
 public class ClearSkies
 {
