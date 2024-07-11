@@ -5,6 +5,7 @@
 01. [Version Control](#version-control)
 02. [Data Types](#data-types)
 03. [Methods](#methods)
+04. [DATA STRUCTURES](#data-structures)
 04. [Arrays](#arrays)
 05. [Lists](#lists)
 06. [Associative Arrays](#associative-arrays)
@@ -152,7 +153,7 @@ Console.WriteLine(result);      // 5
 Console.WriteLine(Sum(2, 3));   // 5
 ```
 
-## DATA STRUCTURE
+## DATA STRUCTURES
 
 **DATA STRUCTURE** A way of storing, accessing and managing data.
 
