@@ -132,8 +132,8 @@ building block (e.g. instead of objects). The function is `first class` citizen,
 which means it can be passed as arguments to function, be returned from function
 and be set to variable.
 
-**PURE FUNCTIONS** Functions that have no side affects and always return the same
-value for the same input, without modifying external data.
+**PURE FUNCTIONS** Functions that have no side affects and always return the
+same value for the same input, without modifying external data.
 
 **DELEGATES** A type that represents reference to methods. Enable you to treat
 methods as objects.
