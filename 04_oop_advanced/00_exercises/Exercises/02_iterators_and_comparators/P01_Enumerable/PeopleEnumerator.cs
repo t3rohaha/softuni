@@ -1,6 +1,6 @@
 using System.Collections;
 
-namespace Iterators.P01_Enumerable;
+namespace IteratorsAndComparators.P01_Enumerable;
 public class PeopleEnumerator : IEnumerator
 {
     private List<Person> _people;

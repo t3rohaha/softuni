@@ -1,4 +1,4 @@
-namespace Iterators.P00_Iterator;
+namespace IteratorsAndComparators.P00_Iterator;
 public class Program
 {
     public static void Main()

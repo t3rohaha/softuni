@@ -54,9 +54,9 @@ generic types can be defined (e.g. Dictionary<TKey, TValue>).
 
 **GENERIC CONSTRAINTS** Specifying the types of generics supported.
 
-## ITERATORS
+## ITERATORS AND COMPARATORS
 
-**ITERATOR** C# feature which allows creating classes that can be enumerated.
+**ITERATOR** C# feature which allows creating objects that can be enumerated.
 
 **IENUMERABLE** Interface that provides a way to iterate over a collection. All
 classes that implement IEnumerable can be iterated with foreach loop. It
@@ -75,7 +75,13 @@ suspends method execution until `foreach` asks for another value.
 **PARAMS** A keyword that allows passing variable number of arguments. Should
 always be last in parameter list.
 
-## COMPARATORS
+**COMPARATOR** C# feature which allows creating objects that can be compared.
+
+**ICOMPARABLE** Interface that defines a method `CompareTo` used to compare the
+current object to another one. Return values should be -1, 0, 1.
+
+**ICOMPARER** Interface that defines a method `Compare` used to compare two
+objects. Return values should be -1, 0, 1.
 
 ## REFLECTION AND ATTRIBUTES
 

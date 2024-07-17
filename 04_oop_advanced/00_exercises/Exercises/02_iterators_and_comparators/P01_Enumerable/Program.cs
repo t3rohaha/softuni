@@ -1,4 +1,4 @@
-namespace Iterators.P01_Enumerable;
+namespace IteratorsAndComparators.P01_Enumerable;
 public class Program
 {
     public static void Main()
@@ -12,6 +12,7 @@ public class Program
 
         People people = new People(personArray);
 
-        foreach(Person p in people) Console.WriteLine(p.ToString());
+        foreach(Person p in people)
+            Console.WriteLine(p.ToString());
     }
 }
