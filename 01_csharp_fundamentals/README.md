@@ -5,14 +5,13 @@
 01. [Version Control](#version-control)
 02. [Data Types](#data-types)
 03. [Methods](#methods)
-04. [DATA STRUCTURES](#data-structures)
+04. [Data Structures](#data-structures)
 04. [Arrays](#arrays)
 05. [Lists](#lists)
 06. [Associative Arrays](#associative-arrays)
 07. [Objects and Classes](#objects-and-classes)
-08. [Files and Directories](#files-and-directories)
-09. [Strings](#strings)
-10. [Regex](#regex)
+08. [Strings](#strings)
+09. [Regex](#regex)
 
 ## VERSION CONTROL
 
