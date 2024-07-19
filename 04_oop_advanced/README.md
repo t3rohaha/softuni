@@ -104,36 +104,66 @@ that are not constructor parameters are added as named parameters.
 
 ## UNIT TESTING
 
-**TRIPLE A PATTERN**
-- `Arrange` Setup the object to be tested.
-- `Act` Execute the operation and get the result.
-- `Assert` Assert the result is equal to the expected result.
+**UNIT TESTING** Software testing method, where individual units are tested in
+isolation from the rest of the application. The main goal is to validate that
+each unit works as expected.
 
-**NAMING CONVENTION** MethodName_Condition_ExpectedResult
+**UNIT** Smallest testable part of the application, typically a function,
+method or class.
 
-**xUnit**
+**ISOLATION** Units are tested independently to ensure that they work correctly
+on their own. Dependencies on other objects, databases, files are usually
+mocked.
 
-- `Fact` Attribute to run a single test.
+**AUTOMATION** Unit tests are usually autamated, allowing them to run repeatedly
+and easily as part of the build proccess.
 
-- `Theory` Attribute that allows passing parameters to tests using `InlineData`
+**ASSERTIONS** Unit tests include assertions that check whether the actual
+output of a unit matches the expected output.
+
+**TESTING FRAMEWORK** There are various frameworks available to facilitate unit
+testing. In C#, common frameworks include MSTest, NUnit, xUnit.
+
+**TRIPLE A PATTERN** Organize test code by breaking down test case.
+
+**ARRENGE** Setup the object to be tested.
+
+**ACT** Execute the operation and get the result.
+
+**ASSERT** Assert the result is equal to the expected result.
+
+**NAMING CONVENTION** MethodName_Condition_ExpectedResult. Better convention in
+my opinion: ClassName+Precondition?_ExpectedResult_Condition.
+
+### XUNIT
+
+**XUNIT** Framework that facilitates unit testing.
+
+**FACT** Attribute to run a single test.
+
+**THEORY** Attribute that allows passing parameters to tests using `InlineData`
 attribute.
 
-- `MemberData` Attribute that allows passing parameters to tests using members
-that return IEnumerable<object[]>.
+**MEMBERDATA** Attribute that allows passing parameters to tests using members
+that return `IEnumerable<object[]>`.
 
-- `ClassData` Attribute that allows passing parameters to tests using classes
-that implement IEnumerable<object[]>. Both Class and Member Data attributes
+**CLASSDATA** Attribute that allows passing parameters to tests using classes
+that implement `IEnumerable<object[]>`. Both ClassData and MemberData attributes
 are used in more complex scenarios like reading the test parameters from an
 external file.
 
-- `Mocking` Simulating the behaviour of an external dependency.
+### MOQ
 
-- `Fake` Generic term to describe, stub or a mock.
+**MOCKING** Simulating the behaviour of an external dependency.
 
-- `Mock` Fake object that the test is asserted against.
+**FAKE** Generic term to describe, stub or a mock.
 
-- `Stub` Fake object that the test is not asserted against. It's usually a
+**MOCK** Fake object that the test is asserted against.
+
+**STUB** Fake object that the test is not asserted against. It's usually a
 dependency that should be setup.
+
+**MOQ** Mocking framework.
 
 **NOTES**
 
@@ -142,6 +172,16 @@ constructor is executed before each test, and the logic inside a dispose
 method is executed after each test.
 
 ## COMMUNICATION AND EVENTS
+
+**EVENT** Feature that enables communication between objects. It uses
+publisher/subscriber model where one object (`publisher`) can notify multiple
+other objects (`subscribers`) about changes or important occurences.
+
+**DELEGATE** Pointer to function. A type that represents a reference to a
+method. Enable you to treat methods as objects.
+
+**EVENTHANDLER** Responsible for receiving and processing data from delegate.
+Normally receive two parameters `Sender` and `EventArgs`.
 
 ## MORE
 
