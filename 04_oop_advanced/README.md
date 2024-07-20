@@ -177,11 +177,16 @@ method is executed after each test.
 publisher/subscriber model where one object (`publisher`) can notify multiple
 other objects (`subscribers`) about changes or important occurences.
 
+**PUBLISHER** A class that defines the handler method and fires the event.
+
+**SUBSCRIBER** A class that provides the handler method and subscribes to the
+publisher.
+
 **DELEGATE** Pointer to function. A type that represents a reference to a
 method. Enable you to treat methods as objects.
 
-**EVENTHANDLER** Responsible for receiving and processing data from delegate.
-Normally receive two parameters `Sender` and `EventArgs`.
+**EVENTHANDLER** Delegate that defines an event handler. Normally receive two
+parameters `Sender` and `EventArgs`.
 
 ## MORE
 
@@ -200,3 +205,16 @@ create larger structures.
 
 **BEHAVIORAL PATTERN** Deal with the communication between objects, defining how
 they interect and distribute responsibilities.
+
+### CHAIN OF RESPONSIBILITY
+
+**CHAIN OF RESPONSIBILITY** Behavioral pattern that allow requests to pass
+through a chain of handlers. Each handler can either proccess the request or
+pass it to the next handler.
+
+**HANDLER** Abstract class that defines the next handler and a handle method.
+
+**CONCRETE HANDLER** Concrete implementation of handler that either proccess
+the request or pass it to the next handler.
+
+**CLIENT** The entity that sends requests to the chain.
