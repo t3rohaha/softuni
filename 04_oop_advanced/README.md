@@ -218,3 +218,21 @@ pass it to the next handler.
 the request or pass it to the next handler.
 
 **CLIENT** The entity that sends requests to the chain.
+
+## COMMAND PATTERN
+
+**COMMAND PATTERN** Behavioral design pattern that decouples the code that
+invokes the command from the code that executes it.
+
+**COMMAND** An interface for executing operations.
+
+**CONCRETE COMMAND** A class that implements the command interface and defines
+the binding between a Receiver object and an action.
+
+**COMMAND RECEIVER** The object that does the actual work when Execute method is
+called.
+
+**COMMAND INVOKER** The object that knows how to execute a command, but doesn't
+know how the command has been implemented.
+
+**CLIENT** The object that creates a concrete Command and sets its Receiver.
