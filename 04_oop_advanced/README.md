@@ -236,3 +236,34 @@ called.
 know how the command has been implemented.
 
 **CLIENT** The object that creates a concrete Command and sets its Receiver.
+
+## MEDIATOR PATTERN
+
+**MEDIATOR PATTERN** Behavioral design pattern that facilitates communication
+between objects by providing a mediator which encapsulates all the interactions
+between the objects.
+
+**MEDIATOR** An interface that defines the communicaiton between colleague
+objects.
+
+**CONCRETE MEDIATOR** Implements the mediator interface.
+
+**COLLAGUE OBJECTS** The objects that interact with each other through the
+mediator. They are aware of the mediator and communicate with other colleagues
+through it.
+
+## OBSERVER PATTERN
+
+**OBSERVER PATTERN** Behavioral design pattern, defines one-to-many relationship
+where an object notifies about changes in its state to another objects.
+
+**SUBJECT** The object that holds the state and sends notifications to observers
+when its state changes.
+
+**OBSERVER** The object that need to be notified of changes in subject's state.
+
+**CONCRETE SUBJECT** A specific implementation of Subject that maintains state
+and notifies observers.
+
+**CONCRETE OBSERVER** A specific implementation of the Observer that reacts to
+changes in subject's state.
