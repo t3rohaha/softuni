@@ -5,10 +5,9 @@
 01. [Setup](#setup)
 02. [First Steps](#first-steps)
 03. [Conditions](#conditions)
-04. [Nested Conditions](#nested-conditions)
-05. [For Loop](#for-loop)
-06. [While Loop](#while-loop)
-07. [Nested Loops](#nested-loops)
+04. [For Loop](#for-loop)
+05. [While Loop](#while-loop)
+06. [Nested Loops](#nested-loops)
 
 ## SETUP
 
@@ -51,7 +50,7 @@ write code.
     console.log(2 == '2');  // true  
     console.log(2 === '2'); // false
 
-    // CONDITIONS
+    // IF-ELSE
     const input = 'red';
     if (input === 'red') {
         console.log('tomato is red');
@@ -59,6 +58,16 @@ write code.
         console.log('orange is orange');
     } else {
         console.log('banana is neither red or orange');
+    }
+
+    // SWITCH-CASE
+    const number = 1;
+    switch (number) {
+        case 1: console.log('Monday'); break;
+        case 2: console.log('Tuesday'); break;
+        case 3: console.log('Wednesday'); break;
+        // ...
+        default: console.log('No such day!'); break;
     }
 
     // ROUNDING
