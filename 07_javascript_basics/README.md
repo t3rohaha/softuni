@@ -5,9 +5,7 @@
 01. [Setup](#setup)
 02. [First Steps](#first-steps)
 03. [Conditions](#conditions)
-04. [For Loop](#for-loop)
-05. [While Loop](#while-loop)
-06. [Nested Loops](#nested-loops)
+04. [Loops](#loops)
 
 ## SETUP
 
@@ -88,3 +86,23 @@ write code.
 
 - In JavaScript there are two types of comparison `==` (casts values and
 compares) and `===` (compares if types are equal, than if value is equal).
+
+## LOOPS
+
+```javascript
+    for (let i = 0; i < 10; i++) {
+        console.log(i);
+    }
+
+    let i = 0;
+    while (i < 10) {
+        console.log(i);
+        i++;
+    }
+
+    for (let h = 0; h <= 23; h++) {
+        for (let m = 0; m <= 59; m++) {
+            console.log(`${h}:${m}`);
+        }
+    }
+```
