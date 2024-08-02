@@ -14,20 +14,20 @@
 ## FIRST STEPS
 
 ```javascript
-    // FUNCTION DECLARATION
-    function printSum(input) {
+// FUNCTION DECLARATION
+function printSum(input) {
 
-        // VARIABLE INITIALIZATION + TYPE CASTING + ARRAY ACCESS
-        const a = Number(input[0]);
-        const b = Number(input[1]);
-        const sum = a + b;
+    // VARIABLE INITIALIZATION + TYPE CASTING + ARRAY ACCESS
+    const a = Number(input[0]);
+    const b = Number(input[1]);
+    const sum = a + b;
 
-        // CONSOLE OUTPUT + INTERPOLATION
-        console.log(`${a} + ${b} = ${sum}`);
-    }
+    // CONSOLE OUTPUT + INTERPOLATION
+    console.log(`${a} + ${b} = ${sum}`);
+}
 
-    // FUNCTION INVOCATION
-    printSum(1, 1);
+// FUNCTION INVOCATION
+printSum(1, 1);
 ```
 
 **NOTES**
@@ -41,45 +41,44 @@ write code.
 ## CONDITIONS
 
 ```javascript
+// COMPARISON OPERATORS
+console.log(2 < 3);     // true
+console.log(2 > 3);     // false
+console.log(2 == '2');  // true  
+console.log(2 === '2'); // false
 
-    // COMPARISON OPERATORS
-    console.log(2 < 3);     // true
-    console.log(2 > 3);     // false
-    console.log(2 == '2');  // true  
-    console.log(2 === '2'); // false
+// IF-ELSE
+const input = 'red';
+if (input === 'red') {
+    console.log('tomato is red');
+} else if (input === 'orange') {
+    console.log('orange is orange');
+} else {
+    console.log('banana is neither red or orange');
+}
 
-    // IF-ELSE
-    const input = 'red';
-    if (input === 'red') {
-        console.log('tomato is red');
-    } else if (input === 'orange') {
-        console.log('orange is orange');
-    } else {
-        console.log('banana is neither red or orange');
-    }
+// SWITCH-CASE
+const number = 1;
+switch (number) {
+    case 1: console.log('Monday'); break;
+    case 2: console.log('Tuesday'); break;
+    case 3: console.log('Wednesday'); break;
+    // ...
+    default: console.log('No such day!'); break;
+}
 
-    // SWITCH-CASE
-    const number = 1;
-    switch (number) {
-        case 1: console.log('Monday'); break;
-        case 2: console.log('Tuesday'); break;
-        case 3: console.log('Wednesday'); break;
-        // ...
-        default: console.log('No such day!'); break;
-    }
+// ROUNDING
+const pi = 3.14159;
+console.log(Math.floor(pi));    // 3
+console.log(Math.ceil(pi));     // 4
+console.log(pi.toFixed(2));     // 3.14
 
-    // ROUNDING
-    const pi = 3.14159;
-    console.log(Math.floor(pi));    // 3
-    console.log(Math.ceil(pi));     // 4
-    console.log(pi.toFixed(2));     // 3.14
+// VARIABLE SCOPE
+function helloWorld() {
+    const test = 'Hello, World!';
+}
 
-    // VARIABLE SCOPE
-    function helloWorld() {
-        const test = 'Hello, World!';
-    }
-
-    console.log(test) // Error!
+console.log(test) // ERROR!
 ```
 
 **NOTES**
@@ -90,19 +89,32 @@ compares) and `===` (compares if types are equal, than if value is equal).
 ## LOOPS
 
 ```javascript
-    for (let i = 0; i < 10; i++) {
-        console.log(i);
-    }
+// FOR LOOP
+for (let i = 0; i < 10; i++) {
+    console.log(i);
+}
 
-    let i = 0;
-    while (i < 10) {
-        console.log(i);
-        i++;
-    }
+// WHILE LOOP
+let i = 0;
+while (i < 10) {
+    console.log(i);
+    i++;
+}
 
-    for (let h = 0; h <= 23; h++) {
-        for (let m = 0; m <= 59; m++) {
-            console.log(`${h}:${m}`);
-        }
+// NESTED FOR LOOP
+for (let h = 0; h <= 23; h++) {
+    for (let m = 0; m <= 59; m++) {
+        console.log(`${h}:${m}`);
     }
+}
+
+// FOR...IN LOOP
+for (let index in [1, 2, 3]) {
+    console.log(index);
+}
+
+// FOR...OF LOOP
+for (let n of [1, 2, 3]) {
+    console.log(n);
+}
 ```
