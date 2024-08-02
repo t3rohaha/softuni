@@ -2,14 +2,14 @@
 
 ## CONTENT
 
-01. [Syntax and Operators](#syntax-and-operators)
+01. [Data Types](#data-types)
 02. [DOM](#dom)
 03. [Functions](#functions)
 04. [Arrays and Matrices](#arrays-and-matrices)
-05. [Regex](#regex)
+05. [Strings and Regex](#regex)
 06. [Objects and JSON](#objects-and-json)
 
-## SYNTAX AND OPERATORS
+## DATA TYPES
 
 **DATA TYPES** Represent the type of data stored in a variable.
 
@@ -42,22 +42,32 @@ keys.
 **ERROR** Represents runtime error.
 
 ```javascript
-    const a = 5;                            // Number
-    const b = 5.5;                          // Number
-    const c = 'Frank';                      // String
-    const d = true;                         // Boolean
-    const e;                                // Undefined
-    const f = null;                         // Null
-    const g = Symbol('symbol');             // Symbol
-    const h = 10n;                          // BigInt
-    const i = { name: 'Frank', age: 33 };   // Object
-    const j = [ 1, 2, 3 ];                  // Array
-    const k = function (input) {            // Function
-        console.log(typeof input);
-    };
-    const l = new Date('2001-09-11');       // Date
-    const m = /[a-z]+/;                     // Regex
-    const n = new Error('404');             // Error
+// PRIMITIVE TYPES
+const a = 5;                                // NUMBER
+const b = 5.5;                              // NUMBER
+const c = 'Frank';                          // STRING
+const d = true;                             // BOOLEAN
+const e;                                    // UNDEFINED
+const f = null;                             // NULL
+const g = Symbol('symbol');                 // SYMBOL
+const h = 10n;                              // BIGINT
+
+// OBJECTS
+const i = { name: 'Frank', age: 33 };       // OBJECT
+const j = [ 1, 2, 3 ];                      // OBJECT (ARRAY)
+const k = function (input) {                // FUNCTION
+    console.log(typeof input);
+};
+const l = new Date('2001-09-11');           // OBJECT (DATE)
+const m = /[a-z]+/;                         // OBJECT (REGEX)
+const n = new Error('404');                 // OBJECT (ERROR)
+
+// TYPE CHECKING
+typeof a === 'number';                      // TRUE 
+typeof c === 'string';                      // TRUE 
+typeof k === 'function';                    // TRUE 
+typeof i === 'object' && !Array.isArray(i); // TRUE 
+Array.isArray(j);                           // TRUE 
 ```
 
 **VARIABLE DECLARATION** JS uses `const`, `let` and `var` keywords for variable
@@ -76,7 +86,7 @@ functions, dates, regex and errors.
 **DOM** Document object model is a programming interface that represents a web
 document. It facilitates document manipulation by programs.
 
-**DOM TREE** The document is represented as tree of nodes. Each node an be
+**DOM TREE** The document is represented as tree of nodes. Each node can be
 element, attribute or text.
 
 **PARENT NODE** Element containing another element.
@@ -86,27 +96,34 @@ element, attribute or text.
 **SIBLING NODES** Elements at the same level within the same parent.
 
 ```javascript
-    const a = document.querySelector('p');
-    a.innerHTML = 'This is <strong>modified</strong> content.';
+// SELECTORS
+const a = document.querySelector('p');          // TAG
+const b = document.querySelector('#article1');  // ID
+const c = document.querySelector('.image');     // CLASS
+const d = document.querySelector('#alert-btn'); // ID
 
-    const b = document.querySelector('#article1');
-    b.textContent = '<p>This is displayed as plain text.</p>';
+// MODIFY ELEMENT CONTENT AS HTML
+a.innerHTML = 'This is <strong>modified</strong> content.';
 
-    const c = document.querySelector('.image');
-    c.src = 'https://example.com/someimage.png';
-    c.alt = 'Some image thumbnail';
+// MODIFY ELEMENT CONTENT AS TEXT
+b.textContent = '<p>This is displayed as plain text.</p>';
 
-    const d = document.querySelector('#alert-btn');
-    d.addEventListener('click', function() {
-        alert('Button was clicked!');
-    });
+// MODIFY ELEMENT ATTRIBUTES
+c.src = 'https://example.com/someimage.png';
+c.alt = 'Some image thumbnail';
 
-    document.addEventListener('keypress', function(event) {
-        switch (event.key) {
-            case 'Enter': alert('Enter was pressed!'); break;
-            case 'Escape': alert('Escape was pressed!'); break;
-        }
-    });
+// ADD CLICK EVENT
+d.addEventListener('click', function() {
+    alert('Button was clicked!');
+});
+
+// ADD KEYPRESS EVENT
+document.addEventListener('keypress', function(event) {
+    switch (event.key) {
+        case 'Enter': alert('Enter was pressed!'); break;
+        case 'Escape': alert('Escape was pressed!'); break;
+    }
+});
 ```
 
 ## FUNCTIONS
@@ -116,41 +133,160 @@ has access to the variables declared in the outer function and a state can be
 created.
 
 ```javascript
-    // FUNCTION DECLARATION
-    function sum1(a = 0, b= 0) {
-        return a + b;
-    }
+// FUNCTION DECLARATION
+function sum1(a = 0, b= 0) {
+    return a + b;
+}
 
-    // FUNCTION EXPRESSION
-    const sum2 = function sum2(a = 0, b = 0) {
-        return a + b;
+// FUNCTION EXPRESSION
+const sum2 = function sum2(a = 0, b = 0) {
+    return a + b;
+};
+
+// ARROW FUNCTION
+const sum3 = (a = 0, b = 0) => {
+    return a + b;
+};
+
+// SELF-INVOKING FUNCTION
+(function sum4(a = 0, b= 0) {
+    console.log(a + b);
+})(1, 1);
+
+// CLOSURE
+let sum5 = (() => {
+    let sum = 0;
+    return (a) => {
+        sum += a;
+        return sum;
     };
+})();
 
-    // ARROW FUNCTION
-    const sum3 = (a = 0, b = 0) => {
-        return a + b;
-    };
-
-    // SELF-INVOKING FUNCTION
-    (function sum4(a = 0, b= 0) {
-        console.log(a + b);
-    })(1, 1);
-
-    // CLOSURE
-    let sum5 = (() => {
-        let sum = 0;
-        return (a) => {
-            sum += a;
-            return sum;
-        };
-    })();
-    console.log(sum5(1));
-    console.log(sum5(2));
-    console.log(sum5(3));
+console.log(sum5(1));   // 1
+console.log(sum5(2));   // 3
+console.log(sum5(3));   // 6
 ```
 
 ## ARRAYS AND MATRICES
 
-## REGEX
+```javascript
+// INITIALIZATION
+const arr1 = [ 1, 2, 3, 4, 5 ];
+const arr2 = [ 'a', 'b', 'c' ];
+const arr3 = [ 1, 'a', { name: 'Frank' } ];
+
+// CRUD
+arr1.push(6);                   // ADD TO END
+arr1.unshift(0);                // ADD TO START
+arr1[0];                        // GET
+arr1.slice(0, 2);               // GET (INDEX, COUNT)
+arr1[0] = 100;                  // MODIFY
+arr1.pop();                     // REMOVE LAST
+arr1.splice(0, 1);              // REMOVE (INDEX, COUNT)
+arr1[-1];                       // UNDEFINED
+
+// SORT
+arr1.sort();                    // SORT ALPHABETICALLY (AS STRING)
+arr1.sort((a, b) => a - b);     // SORT AS NUMBERS
+
+// MORE
+arr1.length;                    // 5
+arr1.includes(10);              // TRUE
+arr1.indexOf(10);               // 0
+arr1.toString();                // 1,2,3,4,5
+arr1.reverse();                 // 5,4,3,2,1
+Array.isArray(arr1);            // TRUE
+
+// MATRIX
+const matrix = [
+    [ 1, 2, 3 ],
+    [ 1, 2, 3 ],
+    [ 1, 2, 3 ]
+];
+
+matrix[0][0];                   // 1
+matrix[0][1];                   // 2
+matrix[0][2];                   // 3
+```
+
+## STRINGS AND REGEX
+
+```javascript
+// INITIALIZATION
+const str1 = 'This is a very long string to wrap accross multiple lines ' +
+             'otherwise my code is unreadable.';
+const str2 = "Hello, World!";
+
+// METHODS
+str1.indexOf('is');         // 2
+str1.lastIndexOf('is');     // 76
+str1.slice(0, 4);           // GET (startIdx, length)
+str1.substring(0, 4);       // GET (stratIdx, length)
+str2.length;                // 13
+
+// REGEX
+const pattern = /is/g;          // MATCH WORD (NO RETURN AFTER FIRST MATCH)
+const pattern2 = /[0-9]+/g      // MATCH ONE OR MORE DIGITS
+str1.match(pattern);            // GET ALL MATCHES
+str1.search(pattern);           // GET INDEX OF FIRST MATCH
+str1.replace(pattern, 'xx');    // REPLACE
+patter2.test(str1);             // FALSE
+```
+
+**NOTES**
+
+- More on Regex can be found here: [C# Fundamentals](https://github.com/t3rohaha/softuni/tree/main/01_csharp_fundamentals)
 
 ## OBJECTS AND JSON
+
+**OBJECT** Data type which holds data and functionality.
+
+```javascript
+// OBJECT INITIALIZATION
+const person1 = {
+    firstName: 'Frank',
+    lastName: 'Lampard',
+    age: 33,
+    greet: function() {
+        console.log(`${this.firstName} ${this.lastName}: Hello!`);
+    }
+};
+
+const person2 = new Object();
+person2.firstName = 'John';
+person2.lastName = 'Terry';
+person2.age = 34;
+person2.greet = function() {
+    console.log(`${this.firstName} ${this.lastName}: Hello!`);
+};
+
+// OBJECT ACCESS
+person.firstName;
+person.lastName;
+person.greet();
+
+// JSON TO OBJECT
+const jsonStr1 = '{"firstName":"Frank"}';
+const person3 = JSON.parse(jsonStr1);
+
+// OBJECT TO JSON
+const jsonStr2 = JSON.stringify(person3);
+```
+
+**JSON** JavaScript Object Notation, is a lightweight and human readable data
+interchange format based on javascript.
+
+```json
+// JSON STRUCTURE
+{
+    "firstName": "Frank",                       // STRING
+    "lastName": "Lampard",                      // STRING
+    "age": 33,                                  // NUMBER
+    "address": {                                // OBJECT
+        "country": "UK",
+        "city": "London"
+    },
+    "phoneNumbers": ["555-4444", "555-3333"],   // ARRAY
+    "currentTeam": null                         // NULL
+}
+```
