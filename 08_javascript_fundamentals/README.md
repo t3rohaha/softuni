@@ -180,6 +180,7 @@ console.log(sum5(3));   // 6
 const arr1 = [ 1, 2, 3, 4, 5 ];
 const arr2 = [ 'a', 'b', 'c' ];
 const arr3 = [ 1, 'a', { name: 'Frank' } ];
+const arr4 = Array.from(arr1);
 
 // CRUD
 arr1.push(6);                   // ADD TO END
@@ -221,22 +222,32 @@ matrix[0][2];                   // 3
 // INITIALIZATION
 const str1 = 'This is a very long string to wrap accross multiple lines ' +
              'otherwise my code is unreadable.';
-const str2 = "Hello, World!";
 
-// METHODS
+// ASCII
+String.fromCharCode(num[]); // FROM ASCII TO CHAR
+str1.charCodeAt(index);     // FROM CHAR TO ASCII
+
+// SEARCH
+str1[0];                    // T
 str1.indexOf('is');         // 2
 str1.lastIndexOf('is');     // 76
-str1.slice(0, 4);           // GET (startIdx, length)
-str1.substring(0, 4);       // GET (stratIdx, length)
-str2.length;                // 13
+str1.substring(0, 4);       // This
+str1.includes('Is');        // true 
+
+// OTHER
+str1.length;                // 90
+str1.slice(0, 4);           // This
+str1.replace('is', 'xx');
 
 // REGEX
-const pattern = /is/g;          // MATCH WORD (NO RETURN AFTER FIRST MATCH)
-const pattern2 = /[0-9]+/g      // MATCH ONE OR MORE DIGITS
-str1.match(pattern);            // GET ALL MATCHES
-str1.search(pattern);           // GET INDEX OF FIRST MATCH
-str1.replace(pattern, 'xx');    // REPLACE
-patter2.test(str1);             // FALSE
+const pattern = new Regex('is', 'g');
+const pattern2 = /[0-9]+/g;
+
+str1.match(pattern);                    // GET ALL MATCHES
+str1.matchAll(pattern);                 // GET ALL MATCHES
+
+str1.search(pattern);                   // GET INDEX OF FIRST MATCH
+patter2.test(str1);                     // FALSE
 ```
 
 **NOTES**
