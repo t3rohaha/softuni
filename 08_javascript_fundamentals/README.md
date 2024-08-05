@@ -97,20 +97,26 @@ element, attribute or text.
 
 ```javascript
 // SELECTORS
-const a = document.querySelector('p');          // TAG
-const b = document.querySelector('#article1');  // ID
-const c = document.querySelector('.image');     // CLASS
-const d = document.querySelector('#alert-btn'); // ID
+document.querySelector('p');                // SELECT BY TAG
+document.querySelector('.image');           // SELECT BY CLASS
+document.querySelector('#article1');        // SELECT BY ID
+document.querySelectorAll('a');             // SELECT ALL
+document.querySelectorAll('#articles a');   // SELECT NESTED ELEMENTS
 
-// MODIFY ELEMENT CONTENT AS HTML
-a.innerHTML = 'This is <strong>modified</strong> content.';
+// CRUD
+document.createElement(element);                // CREATE ELEMENT
+document.createTextNode(text);                  // CREATE TEXT NODE
+document.removeChild(element);                  // REMOVE CHILD
+document.appendChild(element);                  // APPEND CHILD
+document.replaceChild(newEl, oldEl);            // REPLACE CHILD
+a.insertAdjacentHTML('beforeend', '<p>Hi</p>'); // INSERT HTML
+e.textContent = '<p>Hello</p>';                 // UPDATE TEXT
+a.innerHTML = '<p>Hello</p>';                   // UPDATE HTML
 
-// MODIFY ELEMENT CONTENT AS TEXT
-b.textContent = '<p>This is displayed as plain text.</p>';
-
-// MODIFY ELEMENT ATTRIBUTES
+// MODIFY ATTRIBUTES
 c.src = 'https://example.com/someimage.png';
 c.alt = 'Some image thumbnail';
+e.style.color = 'blue';
 
 // ADD CLICK EVENT
 d.addEventListener('click', function() {
