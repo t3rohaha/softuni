@@ -22,7 +22,7 @@ body {
 }
 
 #main {
-    background: url(../shared/background.png) no-repeat center center;
+    background: url(../../shared/background.png) no-repeat center center;
     height: 100vh;
 }
 

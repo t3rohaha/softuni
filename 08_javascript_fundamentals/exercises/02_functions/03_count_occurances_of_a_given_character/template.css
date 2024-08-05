@@ -23,14 +23,13 @@ body {
 
 #main {
     background: url(../../shared/background.png) no-repeat center center;
-    height: 100vh;
+    background-size: cover;
 }
 
 #navigation {
     background: #234465;
     display: inline-block;
     padding: 0.5rem;
-    width: 100%;
 }
 
 #navigation-text {
@@ -78,7 +77,11 @@ main:after {
     clear: both;
 }
 
-button {
+#check-judge {
+    color: #FD9F00;
+}
+
+input[type="button"] {
     padding: 0.3rem 0.5rem;
     font-size: 0.7em;
     margin: 1rem 0 1rem 0;
@@ -89,27 +92,38 @@ button {
     outline: none;
 }
 
-#input {
-    border-bottom: 1px solid #234465;
-    padding: 1%;
-    word-wrap: break-word;
+input[type="text"] {
+    width: 40%;
+    padding: 0.1rem;
+    background: transparent;
+    font-size: 22px;
 }
 
-input[type="button"],
-button {
-    padding: 0.3rem 0.5rem;
-    font-size: 0.7em;
-    margin: 1rem 0 1rem 0;
-    border: none;
-    color: white;
-    background: #234465;
-    border-radius: 5px;
-    outline: none;
+#exercise>form>div:nth-child(1)>label {
+    padding-right: 1.7rem;
+
 }
 
-#output p,
-#input {
-    border-bottom: 1px solid #234465;
-    padding: 1%;
-    word-wrap: break-word;
+#exercise>form>div:nth-child(2)>label {
+    padding-right: 0.5rem;
+
+}
+
+#exercise>form>div:nth-child(3)>label {
+    padding-right: 2.5rem;
+
+}
+
+#exercise>form>div:nth-child(4)>label {
+    padding-right: 1.35rem;
+
+}
+
+#exercise>form>div:nth-child(5)>label {
+    padding-right: 2.15rem;
+
+}
+
+#exercise>form>div {
+    margin-bottom: 0.5rem;
 }
