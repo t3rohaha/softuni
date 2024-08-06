@@ -91,7 +91,7 @@ GO
 -- Bank Bank Bank Bank Bank Bank Bank Bank Bank Bank Bank Bank Bank Bank Bank
 -- =============================================================================
 
-USE Bank;
+USE SoftUni_Bank;
 GO
 
 -- Problem 04. Future value function

@@ -5,16 +5,10 @@
 USE master;
 GO
 
-IF EXISTS (SELECT name FROM sys.databases WHERE name = 'RelationsDB')
-BEGIN
-    DROP DATABASE RelationsDB;
-END
+CREATE DATABASE SoftUni_Relations;
 GO
 
-CREATE DATABASE RelationsDB;
-GO
-
-USE RelationsDB;
+USE SoftUni_Relations;
 GO
 
 PRINT '01. ONE-TO-ONE Example';

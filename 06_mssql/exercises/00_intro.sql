@@ -1,0 +1,174 @@
+-- 01: DATA DEFINITION DATA DEFINITION DATA DEFINITION DATA DEFINITION DATA DEFI
+-- 01: DATA DEFINITION DATA DEFINITION DATA DEFINITION DATA DEFINITION DATA DEFI
+-- 01: DATA DEFINITION DATA DEFINITION DATA DEFINITION DATA DEFINITION DATA DEFI
+
+CREATE DATABASE SoftUni_Bank;
+
+USE SoftUni_Bank;
+GO
+
+CREATE TABLE Clients (
+    Id int PRIMARY KEY IDENTITY,
+    FirstName nvarchar(50) NOT NULL,
+    LastName nvarchar(50) NOT NULL,
+);
+
+CREATE TABLE AccountTypes (
+    Id int PRIMARY KEY IDENTITY,
+    Name nvarchar(50) NOT NULL
+);
+
+CREATE TABLE Accounts (
+    Id int PRIMARY KEY IDENTITY,
+    Balance decimal(15, 2) NOT NULL DEFAULT(0),
+    AccountTypeId int FOREIGN KEY REFERENCES AccountTypes(Id),
+    ClientId int FOREIGN KEY REFERENCES Clients(Id)
+);
+
+CREATE TABLE Transactions (
+    Id int PRIMARY KEY IDENTITY,
+    AccountId int FOREIGN KEY REFERENCES Accounts(Id),
+    OldBalance decimal(15, 2) NOT NULL,
+    NewBalance decimal(15, 2) NOT NULL,
+    Amount AS NewBalance - OldBalance,
+    CreatedAt datetime2
+);
+
+INSERT INTO Clients (FirstName, LastName) VALUES
+('Frank', 'Lampard'),
+('John', 'Terry'),
+('Ashley', 'Cole'),
+('Joe', 'Cole');
+
+INSERT INTO AccountTypes (Name) VALUES
+('Checking'),
+('Saving');
+    
+INSERT INTO Accounts (Balance, AccountTypeId, ClientId) VALUES
+(4000000.50, 1, 1),
+(3000000.50, 1, 2),
+(2000000.50, 2, 3),
+(1000000.50, 2, 4);
+
+GO
+
+-- 02: CREATE VIEW CREATE VIEW CREATE VIEW CREATE VIEW CREATE VIEW CREATE VIEW C
+-- 02: CREATE VIEW CREATE VIEW CREATE VIEW CREATE VIEW CREATE VIEW CREATE VIEW C
+-- 02: CREATE VIEW CREATE VIEW CREATE VIEW CREATE VIEW CREATE VIEW CREATE VIEW C
+
+CREATE VIEW v_ClientBalances
+AS
+SELECT
+    c.FirstName + ' ' + c.LastName AS [Name],
+    at.Name AS [Account Type],
+    c.Balance
+    FROM Clients c
+JOIN Accounts a ON c.Id = a.ClientId
+JOIN AccountTypes at ON at.Id = a.AccountTypeId
+
+GO
+
+-- 03: CREATE FUNCTION CREATE FUNCTION CREATE FUNCTION CREATE FUNCTION CREATE FU
+-- 03: CREATE FUNCTION CREATE FUNCTION CREATE FUNCTION CREATE FUNCTION CREATE FU
+-- 03: CREATE FUNCTION CREATE FUNCTION CREATE FUNCTION CREATE FUNCTION CREATE FU
+
+CREATE FUNCTION f_CalculateTotalBalance
+(
+    @ClientID INT
+)
+RETURNS decimal(15, 2)
+BEGIN
+    DECLARE @result decimal(15, 2);
+
+    SELECT @result = SUM(Balance)
+    FROM Accounts
+    WHERE ClientId = @ClientID;
+
+    RETURN @result
+END
+
+GO
+
+-- 04: CREATE PROCEDURE CREATE PROCEDURE CREATE PROCEDURE CREATE PROCEDURE CREAT
+-- 04: CREATE PROCEDURE CREATE PROCEDURE CREATE PROCEDURE CREATE PROCEDURE CREAT
+-- 04: CREATE PROCEDURE CREATE PROCEDURE CREATE PROCEDURE CREATE PROCEDURE CREAT
+
+CREATE PROC p_AddAccount
+(
+    @ClientId int,
+    @AccountTypeId int
+)
+AS
+BEGIN
+    INSERT INTO Accounts (ClientId, AccountTypeId)
+    VALUES (@ClientId, @AccountTypeId)
+END
+
+GO
+
+-- 05: CREATE PROCEDURE CREATE PROCEDURE CREATE PROCEDURE CREATE PROCEDURE CREAT
+-- 05: CREATE PROCEDURE CREATE PROCEDURE CREATE PROCEDURE CREATE PROCEDURE CREAT
+-- 05: CREATE PROCEDURE CREATE PROCEDURE CREATE PROCEDURE CREATE PROCEDURE CREAT
+
+CREATE PROC p_Deposit
+(
+    @AccountId int,
+    @Amount decimal(15, 2)
+)
+AS
+BEGIN
+    UPDATE Accounts
+    SET Balance += @Amount
+    WHERE Id = @AccountId
+END
+
+GO
+
+-- 06: CREATE PROCEDURE CREATE PROCEDURE CREATE PROCEDURE CREATE PROCEDURE CREAT
+-- 06: CREATE PROCEDURE CREATE PROCEDURE CREATE PROCEDURE CREATE PROCEDURE CREAT
+-- 06: CREATE PROCEDURE CREATE PROCEDURE CREATE PROCEDURE CREATE PROCEDURE CREAT
+
+CREATE PROC p_Withdraw
+    @AccountId int,
+    @Amount decimal(15, 2)
+AS
+BEGIN
+    DECLARE @balance decimal(15, 2)
+
+    SELECT @balance = Balance
+    FROM Accounts
+    WHERE Id = @AccountId
+
+    IF (@balance - @Amount >= 0)
+    BEGIN
+        UPDATE Accounts
+        SET Balance -= @Amount
+        WHERE Id = @AccountId
+    END
+    ELSE
+    BEGIN
+        RAISERROR('Insufficient funds', 10, 1)
+    END
+END
+
+GO
+
+-- 07: CREATE TRANSACTION CREATE TRANSACTION CREATE TRANSACTION CREATE TRANSACTI
+-- 07: CREATE TRANSACTION CREATE TRANSACTION CREATE TRANSACTION CREATE TRANSACTI
+-- 07: CREATE TRANSACTION CREATE TRANSACTION CREATE TRANSACTION CREATE TRANSACTI
+
+CREATE TRIGGER tr_Transaction ON Accounts
+AFTER UPDATE
+AS
+BEGIN
+    INSERT INTO Transactions (AccountId, OldBalance, NewBalance, CreatedAt)
+    SELECT 
+        inserted.Id,
+        deleted.Balance,
+        inserted.Balance,
+        GETDATE()
+        FROM inserted
+    JOIN deleted ON inserted.Id = deleted.Id;
+END
+
+GO

@@ -10,10 +10,10 @@
 -- Problem 01: CREATE DATABASE.
 -- =============================================================================
 
-CREATE DATABASE Minions;
+CREATE DATABASE SoftUni_Minions;
 GO
 
-USE Minions;
+USE SoftUni_Minions;
 
 -- =============================================================================
 -- Problem 02: CREATE TABLES.
@@ -188,10 +188,10 @@ ADD CONSTRAINT UQ_Users_Username UNIQUE (Username);
 -- MOVIES DATABASE MOVIES DATABASE MOVIES DATABASE MOVIES DATABASE MOVIES DATABA
 -- =============================================================================
 
-CREATE DATABASE [Movies];
+CREATE DATABASE SoftUni_Movies;
 GO
 
-USE [Movies];
+USE SoftUni_Movies;
 GO
 
 CREATE TABLE [Directors]
@@ -282,10 +282,10 @@ VALUES
 -- CAR RENTAL DATABASE CAR RENTAL DATABASE CAR RENTAL DATABASE CAR RENTAL DATABA
 -- =============================================================================
 
-CREATE DATABASE [CarRental];
+CREATE DATABASE SoftUni_CarRental;
 GO
 
-USE [CarRental];
+USE SoftUni_CarRental;
 
 CREATE TABLE [Categories]
 (
@@ -406,10 +406,10 @@ VALUES
 -- HOTEL DATABASE HOTEL DATABASE HOTEL DATABASE HOTEL DATABASE HOTEL DATABASE HO
 -- =============================================================================
 
-CREATE DATABASE Hotel;
+CREATE DATABASE SoftUni_Hotel;
 GO
 
-USE Hotel;
+USE SoftUni_Hotel;
 
 CREATE TABLE [Employees]
 (
@@ -727,7 +727,7 @@ SELECT FirstName, LastName, Salary FROM [Employees];
 -- HOTEL DATABASE HOTEL DATABASE HOTEL DATABASE HOTEL DATABASE HOTEL DATABASE HO
 -- =============================================================================
 
-USE [Hotel];
+USE SoftUni_Hotel;
 
 -- =============================================================================
 -- Problem 23: UPDATE

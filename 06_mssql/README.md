@@ -19,6 +19,7 @@
     3. [PROCEDURES](#procedures)
     4. [TRIGGERS](#triggers)
     5. [TRANSACTIONS](#transactions)
+5. [NOTES](#notes)
 
 ## RDBMS and SQL OVERVIEW
 
@@ -478,7 +479,7 @@ BEGIN CATCH
 END CATCH
 ```
 
-## Notes
+## NOTES
 
 **Cartesian product** All possible combinations between the elemets of two sets.
 This is the result when data from multiple tables are taken without a valid

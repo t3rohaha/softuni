@@ -6,7 +6,7 @@
 -- BANK DATABASE BANK DATABASE BANK DATABASE BANK DATABASE BANK DATABASE BANK DA
 -- =============================================================================
 
-USE Bank;
+USE SoftUni_Bank;
 GO
 
 -- Problem 01. Create table logs and add trigger to the Account table that
@@ -182,7 +182,7 @@ GO
 -- DIABLO DATABASE DIABLO DATABASE DIABLO DATABASE DIABLO DATABASE DIABLO DATABA
 -- =============================================================================
 
-USE Diablo;
+USE SoftUni_Diablo;
 GO
 
 -- Problem 06. Create trigger that restricts users from buying items with

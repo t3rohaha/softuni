@@ -139,7 +139,7 @@ GO
 -- Bank Bank Bank Bank Bank Bank Bank Bank Bank Bank Bank Bank Bank Bank Bank
 -- =============================================================================
 
-USE Bank;
+USE SoftUni_Bank;
 GO
 
 -- Problem 06: Find Full Name
