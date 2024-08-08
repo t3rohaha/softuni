@@ -141,16 +141,20 @@ my opinion: ClassName+Precondition?_ExpectedResult_Condition.
 
 **FACT** Attribute to run a single test.
 
-**THEORY** Attribute that allows passing parameters to tests using `InlineData`
+**THEORY** Attribute that allows passing parameters to tests using InlineData
 attribute.
 
 **MEMBERDATA** Attribute that allows passing parameters to tests using members
-that return `IEnumerable<object[]>`.
+that return IEnumerable<object[]>.
 
 **CLASSDATA** Attribute that allows passing parameters to tests using classes
-that implement `IEnumerable<object[]>`. Both ClassData and MemberData attributes
+that implement IEnumerable<object[]>. Both ClassData and MemberData attributes
 are used in more complex scenarios like reading the test parameters from an
 external file.
+
+**SETUP**
+
+`dotnet new xunit -n ProjectName.Tests`
 
 ### MOQ
 
@@ -164,6 +168,10 @@ external file.
 dependency that should be setup.
 
 **MOQ** Mocking framework.
+
+**SETUP**
+
+`dotnet add package Moq`
 
 **NOTES**
 
@@ -219,7 +227,7 @@ the request or pass it to the next handler.
 
 **CLIENT** The entity that sends requests to the chain.
 
-## COMMAND PATTERN
+### COMMAND PATTERN
 
 **COMMAND PATTERN** Behavioral design pattern that decouples the code that
 invokes the command from the code that executes it.
@@ -237,7 +245,7 @@ know how the command has been implemented.
 
 **CLIENT** The object that creates a concrete Command and sets its Receiver.
 
-## MEDIATOR PATTERN
+### MEDIATOR PATTERN
 
 **MEDIATOR PATTERN** Behavioral design pattern that facilitates communication
 between objects by providing a mediator which encapsulates all the interactions
@@ -252,7 +260,7 @@ objects.
 mediator. They are aware of the mediator and communicate with other colleagues
 through it.
 
-## OBSERVER PATTERN
+### OBSERVER PATTERN
 
 **OBSERVER PATTERN** Behavioral design pattern, defines one-to-many relationship
 where an object notifies about changes in its state to another objects.
