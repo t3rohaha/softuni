@@ -8,6 +8,8 @@
 04. [Arrays and Matrices](#arrays-and-matrices)
 05. [Strings and Regex](#regex)
 06. [Objects and JSON](#objects-and-json)
+07. [More](#more)
+    01. [Bubble Sort](#bubble-sort)
 
 ## DATA TYPES
 
@@ -305,5 +307,36 @@ interchange format based on javascript.
     },
     "phoneNumbers": ["555-4444", "555-3333"],   // ARRAY
     "currentTeam": null                         // NULL
+}
+```
+
+## MORE
+
+### BUBBLE SORT
+
+```javascript
+// Easy sorting algorithm.
+
+let nums = [1, 2, 5, 4, 3, 6, 7];
+
+// Cycle through all the elements. Each pass guarantees that the largest
+// unsorted element is set to its correct position.
+for (let i = 0; i < nums.length - 1; i++) {
+    let swapped = false;
+
+    // Compare each pair of adjacent elements until the last sorted element.
+    for (let j = 0; j < nums.length - 1 - i; j++) {
+        if (nums[j] > nums[j + 1]) {
+            let temp = nums[j];
+            nums[j] = nums[j + 1];
+            nums[j + 1] = temp;
+            swapped = true;
+        }
+    }
+
+    // If no swaps were made the array is already ordered.
+    if (!swapped) {
+        break;
+    }
 }
 ```
